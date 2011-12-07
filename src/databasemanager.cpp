@@ -2,6 +2,7 @@
 
 #include <QDebug>
 #include <QDir>
+#include <QSqlQuery>
 
 DatabaseManager* DatabaseManager::instance = NULL;
 
@@ -30,7 +31,27 @@ bool DatabaseManager::open(QString filePath, QString fileName)
     db.setDatabaseName(dbFile);
     qDebug("DB File: "+dbFile.toAscii());
 
-    return db.open();
+    if(!db.open()) return false;
+
+    QFile file(":/db/db.sql");
+    file.open(QIODevice::ReadOnly);
+
+    QTextStream stream(&file);
+
+    QString queryString = stream.readAll();
+
+    file.close();
+
+    QStringList queryList = queryString.split(";");
+
+    QSqlQuery query;
+
+    for(int i = 0; i < queryList.size(); i++)
+    {
+        if(!query.exec(queryList.at(i))) return true; // předpokládá se stav, kdy databáze už je vytvořena
+    }
+
+    return true;
 }
 
 void DatabaseManager::close()
