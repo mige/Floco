@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file>icons/floco-128.png</file>
+        <file>icons/attendance-48.png</file>
+        <file>icons/player-48.png</file>
+        <file>icons/team-48.png</file>
+        <file>icons/tournament-48.png</file>
+        <file>icons/training-48.png</file>
+        <file>icons/add-32.png</file>
+    </qresource>
+</RCC>
