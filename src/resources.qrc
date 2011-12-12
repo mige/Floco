@@ -7,6 +7,11 @@
         <file>icons/tournament-48.png</file>
         <file>icons/training-48.png</file>
         <file>icons/add-32.png</file>
+        <file>icons/add-22.png</file>
+        <file>icons/save-22.png</file>
+        <file>icons/cancel-22.png</file>
+        <file>icons/add-player-22.png</file>
+        <file>icons/delete-player-22.png</file>
     </qresource>
     <qresource prefix="/db">
         <file>db.sql</file>

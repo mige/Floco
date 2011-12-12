@@ -56,6 +56,7 @@ bool DatabaseManager::open(QString filePath, QString fileName)
 
 void DatabaseManager::close()
 {
+    db.commit();
     db.close();
 }
 

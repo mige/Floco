@@ -2,7 +2,7 @@
 -- Author:        Unknown
 -- Caption:       New Model
 -- Project:       Name of the project
--- Changed:       2011-08-31 18:33
+-- Changed:       2011-12-12 19:43
 -- Created:       2011-08-31 17:30
 PRAGMA foreign_keys = OFF;
 
@@ -65,13 +65,14 @@ CREATE TABLE "player"(
   "id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
   "firstname" VARCHAR(100) NOT NULL,
   "surname" VARCHAR(100) NOT NULL,
-  "address" VARCHAR(250) NOT NULL,
-  "email" VARCHAR(150) NOT NULL,
-  "phone" VARCHAR(13) NOT NULL,
+  "birth" DATE NOT NULL,
+  "address" VARCHAR(250),
+  "email" VARCHAR(150),
+  "phone" VARCHAR(13),
   "number" INTEGER NOT NULL,
   "photo" BLOB,
   "post" VARCHAR(50) NOT NULL,
-  "team_id" INTEGER NOT NULL,
+  "team_id" INTEGER,
   CONSTRAINT "fk_player_team1"
     FOREIGN KEY("team_id")
     REFERENCES "team"("id")

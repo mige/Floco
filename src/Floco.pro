@@ -12,12 +12,15 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    databasemanager.cpp
+    databasemanager.cpp \
+    addplayerdlg.cpp
 
 HEADERS  += mainwindow.h \
-    databasemanager.h
+    databasemanager.h \
+    addplayerdlg.h
 
-FORMS    += mainwindow.ui
+FORMS    += ui/mainwindow.ui \
+    ui/addplayerdlg.ui
 
 RESOURCES += \
     resources.qrc
