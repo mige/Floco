@@ -40,13 +40,28 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->treePlayers->sortByColumn(2, Qt::AscendingOrder);
 
     connect(ui->actionAddPlayer, SIGNAL(triggered()), this, SLOT(showAddPlayerDlg()));
+    connect(ui->actionEditPlayer,SIGNAL(triggered()), this, SLOT(editPlayer()));
     connect(ui->actionDeletePlayer, SIGNAL(triggered()), this, SLOT(deletePlayer()));
 }
 
 void MainWindow::showAddPlayerDlg()
 {
     addPlayerDlg = new AddPlayerDlg(playerModel);
-    addPlayerDlg->show();
+    addPlayerDlg->exec();
+    delete addPlayerDlg;
+}
+
+void MainWindow::editPlayer()
+{
+    QItemSelectionModel *selmodel = ui->treePlayers->selectionModel();
+    QModelIndexList list = selmodel->selectedIndexes();
+
+    if(list.size() > 0)
+    {
+        addPlayerDlg = new AddPlayerDlg(playerModel, list.at(0).row());
+        addPlayerDlg->exec();
+        delete addPlayerDlg;
+    }
 }
 
 void MainWindow::deletePlayer()

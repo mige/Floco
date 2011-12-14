@@ -13,6 +13,7 @@ AddPlayerDlg::AddPlayerDlg(QSqlTableModel *model, int playerId, QWidget *parent)
     ui->setupUi(this);
 
     this->model = model;
+    this->idPlayer = playerId;
 
     if(playerId == -1)
     {
@@ -23,11 +24,26 @@ AddPlayerDlg::AddPlayerDlg(QSqlTableModel *model, int playerId, QWidget *parent)
         ui->btnAdd->setVisible(false);
         ui->btnAddAndClose->setVisible(false);
 
-        // TODO: výběr položky a doplnění do formuláře
+        QSqlRecord record = model->record(playerId);
+
+        ui->editFirstname->setText(record.field("firstname").value().toString());
+        ui->editSurname->setText(record.field("surname").value().toString());
+        ui->editAddress->setText(record.field("address").value().toString());
+        ui->editEmail->setText(record.field("email").value().toString());
+        ui->editPhone->setText(record.field("phone").value().toString());
+        ui->editDayOfBirth->setDate(record.field("birth").value().toDate());
+        ui->spinNumber->setValue(record.field("number").value().toInt());
+
+        QString post = record.field("post").value().toString();
+
+        if(post == "defender") ui->comboPost->setCurrentIndex(0);
+        else if(post == "forward") ui->comboPost->setCurrentIndex(1);
+        else ui->comboPost->setCurrentIndex(2);
     }
 
     connect(ui->btnAdd, SIGNAL(clicked()), this, SLOT(addPlayer()));
     connect(ui->btnAddAndClose, SIGNAL(clicked()), this, SLOT(addPlayerAndClose()));
+    connect(ui->btnSave, SIGNAL(clicked()), this, SLOT(saveEditedPlayer()));
     connect(ui->btnCancel, SIGNAL(clicked()), this, SLOT(close()));
 }
 
@@ -40,9 +56,17 @@ bool AddPlayerDlg::insertPlayer()
         return false;
     }
 
-    model->setTable("player");
-    model->select();
+    QSqlRecord record = createRecord();
+    if(!model->insertRecord(-1, record))
+        qDebug("err");
+    if(!model->submitAll())
+        qDebug("err submit");
 
+    return true;
+}
+
+QSqlRecord AddPlayerDlg::createRecord()
+{
     QSqlRecord record;
 
     QSqlField firstname("firstname", QVariant::String);
@@ -72,12 +96,7 @@ bool AddPlayerDlg::insertPlayer()
     record.append(number);
     record.append(post);
 
-    if(!model->insertRecord(-1, record))
-        qDebug("err");
-    if(!model->submitAll())
-        qDebug("err submit");
-
-    return true;
+    return record;
 }
 
 void AddPlayerDlg::addPlayer()
@@ -97,6 +116,20 @@ void AddPlayerDlg::addPlayer()
 void AddPlayerDlg::addPlayerAndClose()
 {
     if(insertPlayer()) close();
+}
+
+void AddPlayerDlg::saveEditedPlayer()
+{
+    if(ui->editFirstname->text().trimmed() == "" ||
+       ui->editSurname->text().trimmed() == "")
+    {
+        QMessageBox::information(this, tr("Edit player"), tr("You must specified firstname and surname."));
+        return;
+    }
+
+    QSqlRecord record = createRecord();
+    model->setRecord(idPlayer, record);
+    close();
 }
 
 AddPlayerDlg::~AddPlayerDlg()

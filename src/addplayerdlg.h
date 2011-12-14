@@ -19,12 +19,15 @@ public:
 public slots:
     void addPlayer();
     void addPlayerAndClose();
+    void saveEditedPlayer();
 
 private:
     bool insertPlayer();
+    QSqlRecord createRecord();
 
     Ui::AddPlayerDlg *ui;
     QSqlTableModel *model;
+    int idPlayer;
 };
 
 #endif // ADDPLAYERDLG_H

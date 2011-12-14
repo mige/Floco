@@ -20,13 +20,14 @@ public:
 
 public slots:
     void showAddPlayerDlg();
+    void editPlayer();
     void deletePlayer();
 
 private:
     Ui::MainWindow *ui;
     DatabaseManager *databaseManager;
     QSqlTableModel *playerModel;
-    AddPlayerDlg *addPlayerDlg;
+    AddPlayerDlg *addPlayerDlg;    
 };
 
 #endif // MAINWINDOW_H
