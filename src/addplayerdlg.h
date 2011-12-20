@@ -20,10 +20,12 @@ public slots:
     void addPlayer();
     void addPlayerAndClose();
     void saveEditedPlayer();
+    void selectFile();
 
 private:
     bool insertPlayer();
     QSqlRecord createRecord();
+    bool checkForm(QString formName);
 
     Ui::AddPlayerDlg *ui;
     QSqlTableModel *model;

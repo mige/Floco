@@ -3,7 +3,6 @@
 
 #include <QMainWindow>
 #include <QSqlTableModel>
-#include <addplayerdlg.h>
 #include <databasemanager.h>
 
 namespace Ui {
@@ -19,15 +18,12 @@ public:
     ~MainWindow();
 
 public slots:
-    void showAddPlayerDlg();
-    void editPlayer();
-    void deletePlayer();
+    void showAbout();
 
 private:
     Ui::MainWindow *ui;
     DatabaseManager *databaseManager;
     QSqlTableModel *playerModel;
-    AddPlayerDlg *addPlayerDlg;    
 };
 
 #endif // MAINWINDOW_H

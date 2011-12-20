@@ -1,6 +1,9 @@
 #include "addplayerdlg.h"
 #include "ui_addplayerdlg.h"
 
+#include <QBuffer>
+#include <QFile>
+#include <QFileDialog>
 #include <QMessageBox>
 #include <QSqlRecord>
 #include <QSqlField>
@@ -45,16 +48,12 @@ AddPlayerDlg::AddPlayerDlg(QSqlTableModel *model, int playerId, QWidget *parent)
     connect(ui->btnAddAndClose, SIGNAL(clicked()), this, SLOT(addPlayerAndClose()));
     connect(ui->btnSave, SIGNAL(clicked()), this, SLOT(saveEditedPlayer()));
     connect(ui->btnCancel, SIGNAL(clicked()), this, SLOT(close()));
+    connect(ui->btnFile, SIGNAL(clicked()), this, SLOT(selectFile()));
 }
 
 bool AddPlayerDlg::insertPlayer()
 {
-    if(ui->editFirstname->text().trimmed() == "" ||
-       ui->editSurname->text().trimmed() == "")
-    {
-        QMessageBox::information(this, tr("Add player"), tr("You must specified firstname and surname."));
-        return false;
-    }
+    if(!checkForm(tr("Add player"))) return false;
 
     QSqlRecord record = createRecord();
     if(!model->insertRecord(-1, record))
@@ -85,7 +84,7 @@ QSqlRecord AddPlayerDlg::createRecord()
     email.setValue(ui->editEmail->text().trimmed());
     phone.setValue(ui->editPhone->text().trimmed());
     number.setValue(ui->spinNumber->value());
-    post.setValue(ui->comboPost->currentText());
+    post.setValue(ui->comboPost->currentText());    
 
     record.append(firstname);
     record.append(surname);
@@ -95,6 +94,22 @@ QSqlRecord AddPlayerDlg::createRecord()
     record.append(phone);
     record.append(number);
     record.append(post);
+
+    QString fileName = ui->editFile->text().trimmed();
+    if(fileName != "")
+    {
+        QPixmap pixmap(fileName);
+        pixmap = pixmap.scaledToWidth(128, Qt::SmoothTransformation);
+        QByteArray bytes;
+        QBuffer buffer(&bytes);
+        buffer.open(QIODevice::WriteOnly);
+        pixmap.save(&buffer, fileName.split(".").last().toAscii());
+        buffer.close();
+
+        QSqlField photo("photo", QVariant::ByteArray);
+        photo.setValue(bytes);
+        record.append(photo);
+    }
 
     return record;
 }
@@ -120,16 +135,42 @@ void AddPlayerDlg::addPlayerAndClose()
 
 void AddPlayerDlg::saveEditedPlayer()
 {
-    if(ui->editFirstname->text().trimmed() == "" ||
-       ui->editSurname->text().trimmed() == "")
-    {
-        QMessageBox::information(this, tr("Edit player"), tr("You must specified firstname and surname."));
-        return;
-    }
+    if(!checkForm(tr("Edit player"))) return;
 
     QSqlRecord record = createRecord();
     model->setRecord(idPlayer, record);
+    model->submitAll();
     close();
+}
+
+bool AddPlayerDlg::checkForm(QString formName)
+{
+    if(ui->editFirstname->text().trimmed() == "" ||
+       ui->editSurname->text().trimmed() == "")
+    {
+        QMessageBox::information(this, formName, tr("You must specified firstname and surname."));
+        return false;
+    }
+
+    QString fileName = ui->editFile->text().trimmed();
+
+    QFile file(fileName);
+
+    if(!file.exists() && fileName != "")
+    {
+        QMessageBox::information(this, tr("Add player"), tr("Selected file does not exists."));
+        return false;
+    }
+
+    return true;
+}
+
+void AddPlayerDlg::selectFile()
+{
+    QString fileName = QFileDialog::getOpenFileName(this,
+        tr("Open Image"), "/home/mige", tr("Image Files (*.png *.jpg *.bmp)"));
+
+    ui->editFile->setText(fileName);
 }
 
 AddPlayerDlg::~AddPlayerDlg()

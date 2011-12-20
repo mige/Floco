@@ -1,4 +1,5 @@
 #include <QtGui/QApplication>
+#include <QTextCodec>
 #include "mainwindow.h"
 
 int main(int argc, char *argv[])
@@ -9,6 +10,8 @@ int main(int argc, char *argv[])
     a.setApplicationVersion("1.0alpha");
     a.setOrganizationDomain("cz.nejdr");
     a.setOrganizationName("nejdr.cz");
+
+    QTextCodec::setCodecForTr(QTextCodec::codecForName("UTF-8"));
 
     MainWindow w;
     w.show();

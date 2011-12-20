@@ -12,6 +12,8 @@
         <file>icons/cancel-22.png</file>
         <file>icons/add-player-22.png</file>
         <file>icons/delete-player-22.png</file>
+        <file>icons/edit-22.png</file>
+        <file>icons/player-128.png</file>
     </qresource>
     <qresource prefix="/db">
         <file>db.sql</file>
