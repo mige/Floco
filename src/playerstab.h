@@ -23,6 +23,7 @@ public slots:
     void editPlayer();
     void deletePlayer();
     void showDetails(QModelIndex index);
+    void showPlayersList();
 
 private:
     Ui::PlayersTab *ui;

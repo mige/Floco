@@ -1,6 +1,7 @@
 #include "playerstab.h"
 #include "ui_playerstab.h"
 
+#include <QDate>
 #include <QMessageBox>
 #include <QSqlField>
 #include <QSqlRecord>
@@ -15,6 +16,7 @@ PlayersTab::PlayersTab(QWidget *parent) :
     connect(ui->btnEdit, SIGNAL(clicked()), this, SLOT(editPlayer()));
     connect(ui->btnDelete, SIGNAL(clicked()), this, SLOT(deletePlayer()));
     connect(ui->treePlayers, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(showDetails(QModelIndex)));
+    connect(ui->btnBackToPlayersList, SIGNAL(clicked()), this, SLOT(showPlayersList()));
 }
 
 void PlayersTab::setModel(QSqlTableModel *playerModel)
@@ -76,7 +78,12 @@ void PlayersTab::showDetails(QModelIndex index)
     QSqlRecord record = model->record(index.row());
 
     ui->txtPlayerName->setText(record.field("firstname").value().toString()+" "+record.field("surname").value().toString());
-
+    ui->txtNumber->setText(tr("Number: <b>")+QString::number(record.field("number").value().toInt()));
+    ui->txtPost->setText(tr("Post: <b>")+record.field("post").value().toString());
+    ui->txtBirth->setText(tr("Day of birth: <b>")+record.field("birth").value().toDate().toString("d.M.yyyy"));
+    ui->txtAddress->setText(tr("Address: <b>")+record.field("address").value().toString());
+    ui->txtPhone->setText(tr("Phone: <b>")+record.field("phone").value().toString());
+    ui->txtMail->setText(tr("E-mail: <b>")+record.field("email").value().toString());
 
     QByteArray photoData = record.field("photo").value().toByteArray();
     QPixmap photo;
@@ -87,6 +94,11 @@ void PlayersTab::showDetails(QModelIndex index)
     ui->photo->setPixmap(photo);
 
     ui->stackedWidget->setCurrentIndex(1);
+}
+
+void PlayersTab::showPlayersList()
+{
+    ui->stackedWidget->setCurrentIndex(0);
 }
 
 PlayersTab::~PlayersTab()

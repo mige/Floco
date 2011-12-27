@@ -24,7 +24,7 @@
       <property name="currentIndex">
        <number>0</number>
       </property>
-      <widget class="PlayersTab" name="tabPlayers" native="true">
+      <widget class="PlayersTab" name="tabPlayers">
        <attribute name="icon">
         <iconset resource="../resources.qrc">
          <normaloff>:/icons/icons/player-48.png</normaloff>:/icons/icons/player-48.png</iconset>
@@ -33,7 +33,7 @@
         <string>Players</string>
        </attribute>
       </widget>
-      <widget class="QWidget" name="tabWidgetPage2" native="true">
+      <widget class="TeamsTab" name="tabTeams">
        <attribute name="icon">
         <iconset resource="../resources.qrc">
          <normaloff>:/icons/icons/team-48.png</normaloff>:/icons/icons/team-48.png</iconset>
@@ -42,7 +42,7 @@
         <string>Teams</string>
        </attribute>
       </widget>
-      <widget class="QWidget" name="tab">
+      <widget class="QWidget" name="tabTournaments">
        <attribute name="icon">
         <iconset resource="../resources.qrc">
          <normaloff>:/icons/icons/tournament-48.png</normaloff>:/icons/icons/tournament-48.png</iconset>
@@ -51,7 +51,7 @@
         <string>Tournaments</string>
        </attribute>
       </widget>
-      <widget class="QWidget" name="tab_2">
+      <widget class="TrainingsTab" name="tabTrainings">
        <attribute name="icon">
         <iconset resource="../resources.qrc">
          <normaloff>:/icons/icons/training-48.png</normaloff>:/icons/icons/training-48.png</iconset>
@@ -60,7 +60,7 @@
         <string>Trainings</string>
        </attribute>
       </widget>
-      <widget class="QWidget" name="tab_3">
+      <widget class="AttendanceTab" name="tabAttendance">
        <attribute name="icon">
         <iconset resource="../resources.qrc">
          <normaloff>:/icons/icons/attendance-48.png</normaloff>:/icons/icons/attendance-48.png</iconset>
@@ -79,27 +79,21 @@
      <x>0</x>
      <y>0</y>
      <width>741</width>
-     <height>25</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuSoubor">
     <property name="title">
-     <string>&amp;Soubor</string>
+     <string>&amp;Fle</string>
     </property>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
-     <string>Help</string>
+     <string>&amp;Help</string>
     </property>
     <addaction name="actionAbout"/>
    </widget>
-   <widget class="QMenu" name="menuPrint">
-    <property name="title">
-     <string>Print</string>
-    </property>
-   </widget>
    <addaction name="menuSoubor"/>
-   <addaction name="menuPrint"/>
    <addaction name="menuHelp"/>
   </widget>
   <action name="actionAbout">
@@ -114,6 +108,24 @@
    <class>PlayersTab</class>
    <extends>QWidget</extends>
    <header>playerstab.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>TeamsTab</class>
+   <extends>QWidget</extends>
+   <header>teamstab.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>TrainingsTab</class>
+   <extends>QWidget</extends>
+   <header>trainingstab.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>AttendanceTab</class>
+   <extends>QWidget</extends>
+   <header>attendancetab.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
