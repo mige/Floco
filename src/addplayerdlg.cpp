@@ -26,6 +26,7 @@ AddPlayerDlg::AddPlayerDlg(QSqlTableModel *model, int playerId, QWidget *parent)
     {
         ui->btnAdd->setVisible(false);
         ui->btnAddAndClose->setVisible(false);
+        this->setWindowTitle(tr("Edit player"));
 
         QSqlRecord record = model->record(playerId);
 
@@ -39,8 +40,8 @@ AddPlayerDlg::AddPlayerDlg(QSqlTableModel *model, int playerId, QWidget *parent)
 
         QString post = record.field("post").value().toString();
 
-        if(post == "defender") ui->comboPost->setCurrentIndex(0);
-        else if(post == "forward") ui->comboPost->setCurrentIndex(1);
+        if(post == tr("defender")) ui->comboPost->setCurrentIndex(0);
+        else if(post == tr("forward")) ui->comboPost->setCurrentIndex(1);
         else ui->comboPost->setCurrentIndex(2);
     }
 

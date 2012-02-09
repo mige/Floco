@@ -2,8 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QSqlTableModel>
 #include <databasemanager.h>
+#include <editcategoriesdlg.h>
 
 namespace Ui {
     class MainWindow;
@@ -19,11 +19,12 @@ public:
 
 public slots:
     void showAbout();
+    void showEditCategories();
 
 private:
-    Ui::MainWindow *ui;
-    DatabaseManager *databaseManager;
-    QSqlTableModel *playerModel;
+    Ui::MainWindow      *ui;
+    DatabaseManager     *databaseManager;
+    EditCategoriesDlg   *editCategoriesDlg;
 };
 
 #endif // MAINWINDOW_H

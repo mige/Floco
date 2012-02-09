@@ -23,13 +23,13 @@ public slots:
     void selectFile();
 
 private:
-    bool insertPlayer();
-    QSqlRecord createRecord();
-    bool checkForm(QString formName);
+    bool        insertPlayer();
+    QSqlRecord  createRecord();
+    bool        checkForm(QString formName);
 
-    Ui::AddPlayerDlg *ui;
-    QSqlTableModel *model;
-    int idPlayer;
+    Ui::AddPlayerDlg    *ui;
+    QSqlTableModel      *model;
+    int                 idPlayer;
 };
 
 #endif // ADDPLAYERDLG_H

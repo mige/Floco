@@ -5,6 +5,7 @@
 #include <QMessageBox>
 #include <QSqlField>
 #include <QSqlRecord>
+#include <QDebug>
 
 PlayersTab::PlayersTab(QWidget *parent) :
     QWidget(parent),
@@ -17,18 +18,9 @@ PlayersTab::PlayersTab(QWidget *parent) :
     connect(ui->btnDelete, SIGNAL(clicked()), this, SLOT(deletePlayer()));
     connect(ui->treePlayers, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(showDetails(QModelIndex)));
     connect(ui->btnBackToPlayersList, SIGNAL(clicked()), this, SLOT(showPlayersList()));
-}
+    connect(ui->editFiltr, SIGNAL(textChanged(QString)), this, SLOT(changeFilter(QString)));
 
-void PlayersTab::setModel(QSqlTableModel *playerModel)
-{
-    model = playerModel;
-    model->setHeaderData(0, Qt::Horizontal, QObject::tr("ID"));
-    model->setHeaderData(1, Qt::Horizontal, QObject::tr("Firstname"));
-    model->setHeaderData(2, Qt::Horizontal, QObject::tr("Surname"));
-    model->setHeaderData(3, Qt::Horizontal, QObject::tr("Date of birth"));
-    model->setHeaderData(4, Qt::Horizontal, QObject::tr("Address"));
-    model->setHeaderData(5, Qt::Horizontal, QObject::tr("E-mail"));
-    model->setHeaderData(6, Qt::Horizontal, QObject::tr("Phone"));
+    model = new PlayerModel(this);
 
     ui->treePlayers->setModel(model);
     ui->treePlayers->hideColumn(0);
@@ -99,6 +91,14 @@ void PlayersTab::showDetails(QModelIndex index)
 void PlayersTab::showPlayersList()
 {
     ui->stackedWidget->setCurrentIndex(0);
+}
+
+void PlayersTab::changeFilter(const QString &text)
+{
+    if(text == "" || text == tr("Filter..."))
+        model->setFilter(QString());
+    else
+        model->setFilter("firstname like '%"+text+"%' or surname like '%"+text+"%'");
 }
 
 PlayersTab::~PlayersTab()

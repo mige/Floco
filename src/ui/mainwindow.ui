@@ -93,12 +93,24 @@
     </property>
     <addaction name="actionAbout"/>
    </widget>
+   <widget class="QMenu" name="menu_Categories">
+    <property name="title">
+     <string>&amp;Categories</string>
+    </property>
+    <addaction name="actionEdit_categories"/>
+   </widget>
    <addaction name="menuSoubor"/>
+   <addaction name="menu_Categories"/>
    <addaction name="menuHelp"/>
   </widget>
   <action name="actionAbout">
    <property name="text">
     <string>About...</string>
+   </property>
+  </action>
+  <action name="actionEdit_categories">
+   <property name="text">
+    <string>Edit categories</string>
    </property>
   </action>
  </widget>

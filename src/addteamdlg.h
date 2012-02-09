@@ -2,6 +2,10 @@
 #define ADDTEAMDLG_H
 
 #include <QDialog>
+#include <QSqlTableModel>
+#include <QSqlRecord>
+#include <models/playermodel.h>
+#include <models/categorymodel.h>
 
 namespace Ui {
     class AddTeamDlg;
@@ -12,11 +16,31 @@ class AddTeamDlg : public QDialog
     Q_OBJECT
 
 public:
-    explicit AddTeamDlg(QWidget *parent = 0);
+    explicit AddTeamDlg(QSqlTableModel *teamModel, int teamRow = -1, QWidget *parent = 0);
     ~AddTeamDlg();
 
+public slots:
+    void moveToLeftTree();
+    void moveToRightTree();
+    void addTeam();
+    void addTeamAndClose();
+    void saveTeam();
+
 private:
-    Ui::AddTeamDlg *ui;
+    void            fixTeamId();
+    QSqlRecord      getClearTeamIdRecord();
+    QSqlRecord      getTeamIdRecord(int teamId);
+    bool            checkForm(QString title);
+    bool            insertTeam();
+    QSqlRecord      createRecord();
+
+    Ui::AddTeamDlg  *ui;
+    QSqlTableModel  *teamModel;
+    PlayerModel     *playerRightModel;
+    CategoryModel   *categoryModel;
+    PlayerModel     *playerLeftModel;
+    int             idTeam;
+    int             rowTeam;
 };
 
 #endif // ADDTEAMDLG_H

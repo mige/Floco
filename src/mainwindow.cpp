@@ -9,21 +9,24 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-    ui->setupUi(this);
-
     QString dbFilePath = QDesktopServices::storageLocation(QDesktopServices::DataLocation);
 
     databaseManager = DatabaseManager::getInstance();
     if(!databaseManager->open(dbFilePath, "floco.db"))
         QMessageBox::critical(this, tr("Floco"), tr("Cannot open database file!"));
 
-    connect(ui->actionAbout, SIGNAL(triggered()), this, SLOT(showAbout()));
+    ui->setupUi(this); // UI setup must be after database connection otherwise
+                       // they will not work models correctly in other class
 
-    playerModel = new QSqlTableModel(this); // TODO: QSqlRelationalTableModel
-    playerModel->setTable("player");
-    playerModel->setEditStrategy(QSqlTableModel::OnManualSubmit);
-    playerModel->select();
-    ui->tabPlayers->setModel(playerModel);
+    connect(ui->actionEdit_categories, SIGNAL(triggered()), this, SLOT(showEditCategories()));
+    connect(ui->actionAbout, SIGNAL(triggered()), this, SLOT(showAbout()));
+}
+
+void MainWindow::showEditCategories()
+{
+    editCategoriesDlg = new EditCategoriesDlg();
+    editCategoriesDlg->exec();
+    delete editCategoriesDlg;
 }
 
 void MainWindow::showAbout()
@@ -35,5 +38,6 @@ MainWindow::~MainWindow()
 {
     qDebug() << databaseManager->lastError();
     databaseManager->close();
+    delete databaseManager;
     delete ui;
 }

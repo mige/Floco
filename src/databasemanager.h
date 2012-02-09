@@ -11,16 +11,16 @@ class DatabaseManager : public QObject
 
 public:
     static DatabaseManager* getInstance();
-    bool open(QString filePath, QString fileName);
-    void close();
-    QSqlError lastError();
+    bool                    open(QString filePath, QString fileName);
+    void                    close();
+    QSqlError               lastError();
 
 protected:
     DatabaseManager();
 
 private:
     static DatabaseManager *instance;
-    QSqlDatabase db;
+    QSqlDatabase            db;
 };
 
 #endif // DATABASEMANAGER_H

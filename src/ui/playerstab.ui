@@ -100,9 +100,14 @@
           </spacer>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit_2">
+          <widget class="FiltrEdit" name="editFiltr">
+           <property name="font">
+            <font>
+             <italic>true</italic>
+            </font>
+           </property>
            <property name="text">
-            <string>Filtr</string>
+            <string>Filter...</string>
            </property>
           </widget>
          </item>
@@ -290,6 +295,13 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>FiltrEdit</class>
+   <extends>QLineEdit</extends>
+   <header>widget/filtredit.h</header>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="../resources.qrc"/>
  </resources>

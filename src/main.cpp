@@ -1,5 +1,7 @@
 #include <QtGui/QApplication>
+#include <QLocale>
 #include <QTextCodec>
+#include <QTranslator>
 #include "mainwindow.h"
 
 int main(int argc, char *argv[])
@@ -12,6 +14,10 @@ int main(int argc, char *argv[])
     a.setOrganizationName("nejdr.cz");
 
     QTextCodec::setCodecForTr(QTextCodec::codecForName("UTF-8"));
+
+    QTranslator t;
+    t.load(a.applicationName() + "." + QLocale::system().name());
+    a.installTranslator(&t);
 
     MainWindow w;
     w.show();

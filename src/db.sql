@@ -1,8 +1,8 @@
--- Creator:       MySQL Workbench 5.2.35/ExportSQLite plugin 2009.12.02
+-- Creator:       MySQL Workbench 5.2.37/ExportSQLite plugin 2009.12.02
 -- Author:        Unknown
 -- Caption:       New Model
 -- Project:       Name of the project
--- Changed:       2011-12-12 19:43
+-- Changed:       2012-02-09 18:22
 -- Created:       2011-08-31 17:30
 PRAGMA foreign_keys = OFF;
 
@@ -11,7 +11,8 @@ BEGIN;
 CREATE TABLE "team_category"(
   "id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
   "name" VARCHAR(50) NOT NULL,
-  "male" BOOLEAN NOT NULL
+  "male" BOOLEAN NOT NULL,
+  "max_age" INTEGER NOT NULL
 );
 CREATE TABLE "camp"(
   "id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
@@ -32,6 +33,8 @@ CREATE INDEX "team.fk_team_team_category1" ON "team"("team_category_id");
 CREATE TABLE "training"(
   "id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
   "date" DATE NOT NULL,
+  "time" TIME NOT NULL,
+  "place" VARCHAR(150) NOT NULL,
   "canceled" BOOLEAN NOT NULL,
   "team_id" INTEGER NOT NULL,
   CONSTRAINT "fk_training_team1"
@@ -95,7 +98,6 @@ CREATE INDEX "attendance.fk_attendance_training1" ON "attendance"("training_id")
 CREATE TABLE "camp_has_player"(
   "camp_id" INTEGER NOT NULL,
   "player_id" INTEGER NOT NULL,
-  PRIMARY KEY("camp_id","player_id"),
   CONSTRAINT "fk_camp_has_player_camp1"
     FOREIGN KEY("camp_id")
     REFERENCES "camp"("id"),

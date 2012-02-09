@@ -20,7 +20,15 @@ SOURCES += main.cpp\
     teamstab.cpp \
     addteamdlg.cpp \
     trainingstab.cpp \
-    attendancetab.cpp
+    attendancetab.cpp \
+    editcategoriesdlg.cpp \
+    addcategorydlg.cpp \
+    models/categorymodel.cpp \
+    models/playermodel.cpp \
+    widget/filtredit.cpp \
+    addtrainingdlg.cpp \
+    models/teammodel.cpp \
+    models/trainingmodel.cpp
 
 HEADERS  += mainwindow.h \
     databasemanager.h \
@@ -29,7 +37,15 @@ HEADERS  += mainwindow.h \
     teamstab.h \
     addteamdlg.h \
     trainingstab.h \
-    attendancetab.h
+    attendancetab.h \
+    editcategoriesdlg.h \
+    addcategorydlg.h \
+    models/categorymodel.h \
+    models/playermodel.h \
+    widget/filtredit.h \
+    addtrainingdlg.h \
+    models/teammodel.h \
+    models/trainingmodel.h
 
 FORMS    += ui/mainwindow.ui \
     ui/addplayerdlg.ui \
@@ -37,7 +53,10 @@ FORMS    += ui/mainwindow.ui \
     ui/teamstab.ui \
     ui/addteamdlg.ui \
     ui/trainingstab.ui \
-    ui/attendancetab.ui
+    ui/attendancetab.ui \
+    ui/editcategoriesdlg.ui \
+    ui/addcategorydlg.ui \
+    ui/addtrainingdlg.ui
 
 RESOURCES += \
     resources.qrc

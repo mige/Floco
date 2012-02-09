@@ -2,8 +2,8 @@
 #define PLAYERSTAB_H
 
 #include <QWidget>
-#include <QSqlTableModel>
 #include <addplayerdlg.h>
+#include <models/playermodel.h>
 
 namespace Ui {
     class PlayersTab;
@@ -24,11 +24,12 @@ public slots:
     void deletePlayer();
     void showDetails(QModelIndex index);
     void showPlayersList();
+    void changeFilter(const QString& text);
 
 private:
-    Ui::PlayersTab *ui;
-    AddPlayerDlg *addPlayerDlg;
-    QSqlTableModel *model;
+    Ui::PlayersTab  *ui;
+    AddPlayerDlg    *addPlayerDlg;
+    PlayerModel     *model;
 };
 
 #endif // PLAYERSTAB_H
