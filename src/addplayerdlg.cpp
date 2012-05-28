@@ -9,6 +9,12 @@
 #include <QSqlField>
 #include <QDebug>
 
+/**
+ * @brief Creates a dialog for adding or edditing player.
+ * @param model Player model.
+ * @param playerId Player ID to be edit. If set to -1, dialog provides form for adding player.
+ * @param parent Parent widget.
+ */
 AddPlayerDlg::AddPlayerDlg(QSqlTableModel *model, int playerId, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::AddPlayerDlg)
@@ -115,6 +121,10 @@ QSqlRecord AddPlayerDlg::createRecord()
     return record;
 }
 
+/**
+ * @brief Checks the data from the form and when everything is ok, data is inserted into the model.
+ * @sa AddPlayerDlg::addPlayerAndClose()
+ */
 void AddPlayerDlg::addPlayer()
 {
     if(insertPlayer())
@@ -129,11 +139,18 @@ void AddPlayerDlg::addPlayer()
     }
 }
 
+/**
+ * @brief Checks the data from the form and when everything is ok, data is inserted into the model and close the dialog.
+ * @sa AddPlayerDlg::addPlayer()
+ */
 void AddPlayerDlg::addPlayerAndClose()
 {
     if(insertPlayer()) close();
 }
 
+/**
+ * @brief Checks the data from the form and when everything is ok, data is edited in the model and close the dialog.
+ */
 void AddPlayerDlg::saveEditedPlayer()
 {
     if(!checkForm(tr("Edit player"))) return;
@@ -166,14 +183,20 @@ bool AddPlayerDlg::checkForm(QString formName)
     return true;
 }
 
+/**
+ * @brief Show file dialog for select photo of the player.
+ */
 void AddPlayerDlg::selectFile()
 {
     QString fileName = QFileDialog::getOpenFileName(this,
-        tr("Open Image"), "/home/mige", tr("Image Files (*.png *.jpg *.bmp)"));
+        tr("Open Image"), QDir::homePath(), tr("Image Files (*.png *.jpg *.bmp)"));
 
     ui->editFile->setText(fileName);
 }
 
+/**
+ * @brief Destructs the dialog.
+ */
 AddPlayerDlg::~AddPlayerDlg()
 {
     delete ui;

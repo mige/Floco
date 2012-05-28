@@ -3,6 +3,9 @@
 
 #include <QSqlTableModel>
 
+/**
+ * @brief The TrainingModel class provides the training model from the database.
+ */
 class TrainingModel : public QSqlTableModel
 {
     Q_OBJECT

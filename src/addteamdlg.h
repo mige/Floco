@@ -11,6 +11,9 @@ namespace Ui {
     class AddTeamDlg;
 }
 
+/**
+ * @brief The AddTeamDlg class provides the window for adding or editing teams.
+ */
 class AddTeamDlg : public QDialog
 {
     Q_OBJECT

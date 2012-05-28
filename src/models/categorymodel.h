@@ -3,6 +3,9 @@
 
 #include <QSqlTableModel>
 
+/**
+ * @brief The CategoryModel class provides the categories of players model from the database.
+ */
 class CategoryModel : public QSqlTableModel
 {
     Q_OBJECT

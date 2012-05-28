@@ -9,6 +9,9 @@ namespace Ui {
     class PlayersTab;
 }
 
+/**
+ * @brief The PlayersTab class provides tab widget for management players.
+ */
 class PlayersTab : public QWidget
 {
     Q_OBJECT
@@ -16,7 +19,6 @@ class PlayersTab : public QWidget
 public:
     explicit PlayersTab(QWidget *parent = 0);
     ~PlayersTab();
-    void setModel(QSqlTableModel *playerModel);
 
 public slots:
     void showAddPlayerDlg();

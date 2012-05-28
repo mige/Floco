@@ -5,6 +5,12 @@
 #include <QSqlField>
 #include <QSqlRecord>
 
+/**
+ * @brief Creates a dialog for adding or editting category.
+ * @param categoryModel Category model.
+ * @param categoryId Category ID to be edit. If set to -1, dialog provides form for adding category.
+ * @param parent Parent widget.
+ */
 AddCategoryDlg::AddCategoryDlg(QSqlTableModel *categoryModel, int categoryId, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::AddCategoryDlg)
@@ -39,6 +45,10 @@ AddCategoryDlg::AddCategoryDlg(QSqlTableModel *categoryModel, int categoryId, QW
     }
 }
 
+/**
+ * @brief Checks the data from the form and when everything is ok, data is inserted into the model.
+ * @sa AddCategoryDlg::addCategoryAndClose()
+ */
 void AddCategoryDlg::addCategory()
 {
     if(insertCategory())
@@ -50,11 +60,18 @@ void AddCategoryDlg::addCategory()
     }
 }
 
+/**
+ * @brief Checks the data from the form and when everything is ok, data is inserted into the model and close the dialog.
+ * @sa AddCategoryDlg::addCategory()
+ */
 void AddCategoryDlg::addCategoryAndClose()
 {
     if(insertCategory()) close();
 }
 
+/**
+ * @brief Checks the data from the form and when everything is ok, data is edited in the model and close the dialog.
+ */
 void AddCategoryDlg::editCategory()
 {
     if(!checkForm(tr("Edit category"))) return;
@@ -115,6 +132,9 @@ bool AddCategoryDlg::checkForm(QString formName)
     return true;
 }
 
+/**
+ * @brief Destructs the dialog.
+ */
 AddCategoryDlg::~AddCategoryDlg()
 {
     delete ui;

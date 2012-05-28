@@ -3,6 +3,10 @@
 #include <QSqlField>
 #include <QSqlRecord>
 
+/**
+ * @brief Creates a category model and set header data.
+ * @param parent Parent object.
+ */
 CategoryModel::CategoryModel(QObject *parent) :
     QSqlTableModel(parent)
 {
@@ -15,6 +19,12 @@ CategoryModel::CategoryModel(QObject *parent) :
     setHeaderData(3, Qt::Horizontal, QObject::tr("Max age"));
 }
 
+/**
+ * @brief Gets the data from the model.
+ * @param index Model index.
+ * @param role If set Qt::DisplayRole, replace in 3. column 100 with adult.
+ * @return Returns the data for the given role for the item referred to by the index.
+ */
 QVariant CategoryModel::data(const QModelIndex &index, int role) const
  {
      QVariant value = QSqlQueryModel::data(index, role);
@@ -28,6 +38,10 @@ QVariant CategoryModel::data(const QModelIndex &index, int role) const
      return value;
  }
 
+/**
+ * @brief Gets the list of categories from the model.
+ * @return List of categories.
+ */
 QList<QString> CategoryModel::categoryList()
 {
     QList<QString> categoryList;

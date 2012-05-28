@@ -1,5 +1,9 @@
 #include "teammodel.h"
 
+/**
+ * @brief Creates a team model and set header data.
+ * @param parent Parent object.
+ */
 TeamModel::TeamModel(QObject *parent) :
     QSqlRelationalTableModel(parent)
 {

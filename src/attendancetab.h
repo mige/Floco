@@ -7,6 +7,9 @@ namespace Ui {
     class AttendanceTab;
 }
 
+/**
+ * @brief The AttendanceTab class provides tab widget for viewing attendance.
+ */
 class AttendanceTab : public QWidget
 {
     Q_OBJECT

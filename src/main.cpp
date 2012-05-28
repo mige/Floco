@@ -4,6 +4,12 @@
 #include <QTranslator>
 #include "mainwindow.h"
 
+/**
+ * @mainpage
+ * Floco is application for management floorball teams.
+*/
+
+
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);

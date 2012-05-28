@@ -1,5 +1,9 @@
 #include "trainingmodel.h"
 
+/**
+ * @brief Creates a training model and set header data.
+ * @param parent Parent object.
+ */
 TrainingModel::TrainingModel(QObject *parent) :
     QSqlTableModel(parent)
 {

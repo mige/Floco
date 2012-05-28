@@ -10,6 +10,9 @@ namespace Ui {
     class TrainingsTab;
 }
 
+/**
+ * @brief The TrainingsTab class provides tab widget for management training.
+ */
 class TrainingsTab : public QWidget
 {
     Q_OBJECT

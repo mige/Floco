@@ -4,6 +4,9 @@
 #include <QLineEdit>
 #include <QToolButton>
 
+/**
+ * @brief The FiltrEdit widget provides fields for filtering results.
+ */
 class FiltrEdit : public QLineEdit
 {
     Q_OBJECT

@@ -3,6 +3,9 @@
 
 #include <QSqlRelationalTableModel>
 
+/**
+ * @brief The PlayerModel class provides the players model from the database.
+ */
 class PlayerModel : public QSqlRelationalTableModel
 {
     Q_OBJECT

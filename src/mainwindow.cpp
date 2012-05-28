@@ -5,6 +5,10 @@
 #include <QDebug>
 #include <QMessageBox>
 
+/**
+ * @brief Creates a main window.
+ * @param parent Parent widget.
+ */
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -22,6 +26,9 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionAbout, SIGNAL(triggered()), this, SLOT(showAbout()));
 }
 
+/**
+ * @brief Show the edit categories dialog.
+ */
 void MainWindow::showEditCategories()
 {
     editCategoriesDlg = new EditCategoriesDlg();
@@ -29,11 +36,17 @@ void MainWindow::showEditCategories()
     delete editCategoriesDlg;
 }
 
+/**
+ * @brief Show the about dialog.
+ */
 void MainWindow::showAbout()
 {
     QMessageBox::about(this, tr("About Floco"), tr("Created by Aleš Nejdr"));
 }
 
+/**
+ * @brief Close the database connection and destruct the window.
+ */
 MainWindow::~MainWindow()
 {
     databaseManager->close();

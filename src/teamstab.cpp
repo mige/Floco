@@ -7,6 +7,10 @@
 #include <QSqlField>
 #include <QSqlRecord>
 
+/**
+ * @brief Creates a tab widget for management teams.
+ * @param parent The parent widget.
+ */
 TeamsTab::TeamsTab(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::TeamsTab)
@@ -47,6 +51,9 @@ TeamsTab::TeamsTab(QWidget *parent) :
     ui->treeView->hideColumn(10);
 }
 
+/**
+ * @brief Displays the dialog for add team.
+ */
 void TeamsTab::showAddTeamDlg()
 {
     addTeamDlg = new AddTeamDlg(teamModel);
@@ -55,6 +62,9 @@ void TeamsTab::showAddTeamDlg()
     playerModel->select();
 }
 
+/**
+ * @brief Displays the dialog for editing selected team.
+ */
 void TeamsTab::showEditTeamDlg()
 {
     int teamRow = currentTeamRow();
@@ -66,6 +76,9 @@ void TeamsTab::showEditTeamDlg()
     playerModel->select();
 }
 
+/**
+ * @brief Delete the selected teams.
+ */
 void TeamsTab::deleteTeam()
 {
     int teamRow = currentTeamRow();
@@ -91,12 +104,20 @@ void TeamsTab::deleteTeam()
     teamModel->submitAll();
 }
 
+/**
+ * @brief Change players filter by team ID.
+ * @param index Index of selected team.
+ */
 void TeamsTab::changePlayerFilter(QModelIndex index)
 {
     int idx = teamModel->record(index.row()).field("id").value().toInt();
     playerModel->setFilter("team_id="+QString::number(idx));
 }
 
+/**
+ * @brief Change team filter by category ID.
+ * @param index Index of selected category.
+ */
 void TeamsTab::changeTeamFilter(int index)
 {
     if(index == 0)
@@ -117,6 +138,9 @@ int TeamsTab::currentTeamRow()
     return list.at(0).row();
 }
 
+/**
+ * @brief destruct the widget.
+ */
 TeamsTab::~TeamsTab()
 {
     delete categoryModel;

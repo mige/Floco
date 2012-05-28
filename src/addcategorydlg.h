@@ -8,6 +8,9 @@ namespace Ui {
     class AddCategoryDlg;
 }
 
+/**
+ * @brief The AddCategoryDlg class provides the window for adding category of players.
+ */
 class AddCategoryDlg : public QDialog
 {
     Q_OBJECT

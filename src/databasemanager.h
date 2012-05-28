@@ -5,6 +5,10 @@
 #include <QSqlDatabase>
 #include <QSqlError>
 
+/**
+ * @brief The DatabaseManager class provides database connection.
+ * If the database does not exist, create a new database in user's home directory.
+ */
 class DatabaseManager : public QObject
 {
     Q_OBJECT

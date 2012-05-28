@@ -1,5 +1,9 @@
 #include "playermodel.h"
 
+/**
+ * @brief Creates a player model and set header data.
+ * @param parent Parent obejct.
+ */
 PlayerModel::PlayerModel(QObject *parent) :
     QSqlRelationalTableModel(parent)
 {

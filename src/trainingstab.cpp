@@ -1,6 +1,10 @@
 #include "trainingstab.h"
 #include "ui_trainingstab.h"
 
+/**
+ * @brief Creates a tab widget for management training.
+ * @param parent Parent widget.
+ */
 TrainingsTab::TrainingsTab(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::TrainingsTab)
@@ -20,6 +24,9 @@ TrainingsTab::TrainingsTab(QWidget *parent) :
     ui->treeView->hideColumn(5);
 }
 
+/**
+ * @brief Show the dialog for adding training.
+ */
 void TrainingsTab::showAddTrainingDlg()
 {
     addTrainingDlg = new AddTrainingDlg;
@@ -27,6 +34,9 @@ void TrainingsTab::showAddTrainingDlg()
     delete addTrainingDlg;
 }
 
+/**
+ * @brief Destruct the widget.
+ */
 TrainingsTab::~TrainingsTab()
 {
     delete ui;

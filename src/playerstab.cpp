@@ -7,6 +7,10 @@
 #include <QSqlRecord>
 #include <QDebug>
 
+/**
+ * @brief Creates a tab widget for management players.
+ * @param parent The parent widget.
+ */
 PlayersTab::PlayersTab(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::PlayersTab)
@@ -32,6 +36,9 @@ PlayersTab::PlayersTab(QWidget *parent) :
     ui->treePlayers->sortByColumn(2, Qt::AscendingOrder);
 }
 
+/**
+ * @brief Show the dialog for add player.
+ */
 void PlayersTab::showAddPlayerDlg()
 {
     addPlayerDlg = new AddPlayerDlg(model);
@@ -39,6 +46,9 @@ void PlayersTab::showAddPlayerDlg()
     delete addPlayerDlg;
 }
 
+/**
+ * @brief Show the dialog for the first selected player.
+ */
 void PlayersTab::editPlayer()
 {
     QItemSelectionModel *selmodel = ui->treePlayers->selectionModel();
@@ -52,6 +62,9 @@ void PlayersTab::editPlayer()
     }
 }
 
+/**
+ * @brief Deletes the selected players.
+ */
 void PlayersTab::deletePlayer()
 {
     QItemSelectionModel *selmodel = ui->treePlayers->selectionModel();
@@ -65,6 +78,10 @@ void PlayersTab::deletePlayer()
     model->submitAll();
 }
 
+/**
+ * @brief Displays detailed info player by index.
+ * @param index Index player in model.
+ */
 void PlayersTab::showDetails(QModelIndex index)
 {
     QSqlRecord record = model->record(index.row());
@@ -88,11 +105,18 @@ void PlayersTab::showDetails(QModelIndex index)
     ui->stackedWidget->setCurrentIndex(1);
 }
 
+/**
+ * @brief Displays players list.
+ */
 void PlayersTab::showPlayersList()
 {
     ui->stackedWidget->setCurrentIndex(0);
 }
 
+/**
+ * @brief Filter players by firstname and surname.
+ * @param text Filter text.
+ */
 void PlayersTab::changeFilter(const QString &text)
 {
     if(text == "" || text == tr("Filter..."))
@@ -101,6 +125,9 @@ void PlayersTab::changeFilter(const QString &text)
         model->setFilter("firstname like '%"+text+"%' or surname like '%"+text+"%'");
 }
 
+/**
+ * @brief Destruct the widget.
+ */
 PlayersTab::~PlayersTab()
 {
     delete model;

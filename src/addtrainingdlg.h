@@ -8,6 +8,9 @@ namespace Ui {
     class AddTrainingDlg;
 }
 
+/**
+ * @brief The AddTrainingDlg class provides the window for adding or editing trainings.
+ */
 class AddTrainingDlg : public QDialog
 {
     Q_OBJECT

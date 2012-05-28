@@ -12,6 +12,9 @@ AddTrainingDlg::AddTrainingDlg(QWidget *parent) :
     ui->comboBoxTeam->setModelColumn(1);
 }
 
+/**
+ * @brief Destructs the dialog.
+ */
 AddTrainingDlg::~AddTrainingDlg()
 {
     delete ui;

@@ -3,8 +3,12 @@
 
 #include <QMessageBox>
 
-//!
-
+/**
+ * @brief Creates a dialog for editing category.
+ *
+ * Initial filter set to <b>male='true'</b>.
+ * @param parent Parent widget.
+ */
 EditCategoriesDlg::EditCategoriesDlg(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::EditCategoriesDlg)
@@ -24,17 +28,19 @@ EditCategoriesDlg::EditCategoriesDlg(QWidget *parent) :
     ui->treeView->hideColumn(2);
 }
 
-//! Change sex for the filter categories.
-/*!
-  \param male boolean True if the male
-*/
+/**
+ * @brief Change sex for the category filter.
+ * @param male True if the male, false if the female.
+ */
 void EditCategoriesDlg::changeSex(bool male)
 {
     if(male) model->setFilter("male='true'");
     else model->setFilter("male='false'");
 }
 
-//! Delete the selected category
+/**
+ * @brief Delete selected cateries.
+ */
 void EditCategoriesDlg::deleteCategory()
 {
     QItemSelectionModel *selmodel = ui->treeView->selectionModel();
@@ -48,7 +54,9 @@ void EditCategoriesDlg::deleteCategory()
     model->submitAll();
 }
 
-//! Show dialog for add category.
+/**
+ * @brief Show dialog for add category.
+ */
 void EditCategoriesDlg::showAddCategoryDlg()
 {
     addCategoryDlg = new AddCategoryDlg(model);
@@ -56,7 +64,9 @@ void EditCategoriesDlg::showAddCategoryDlg()
     delete addCategoryDlg;
 }
 
-//! Show dialog for edit category.
+/**
+ * @brief Show dialog for edit category.
+ */
 void EditCategoriesDlg::showEditCategoryDlg()
 {
     QItemSelectionModel *selmodel = ui->treeView->selectionModel();
@@ -70,7 +80,9 @@ void EditCategoriesDlg::showEditCategoryDlg()
     }
 }
 
-//! The destructor.
+/**
+ * @brief Dectruct the dialog.
+ */
 EditCategoriesDlg::~EditCategoriesDlg()
 {
     delete model;

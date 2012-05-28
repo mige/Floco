@@ -8,7 +8,10 @@ DatabaseManager* DatabaseManager::instance = NULL;
 
 DatabaseManager::DatabaseManager(){ }
 
-
+/**
+ * @brief Return instance of DatabaseManager.
+ * @return Instance of DatabaseManager.
+ */
 DatabaseManager* DatabaseManager::getInstance()
 {
     if(instance == NULL)
@@ -16,6 +19,14 @@ DatabaseManager* DatabaseManager::getInstance()
     return instance;
 }
 
+/**
+ * @brief Open database.
+ *
+ * If the database does not exist, create a new database in the directory.
+ * @param filePath The path to the directory where the database file saved.
+ * @param fileName The database file name.
+ * @return True if it managed to open the database. Otherwise false.
+ */
 bool DatabaseManager::open(QString filePath, QString fileName)
 {
     QDir dir(filePath);
@@ -54,12 +65,19 @@ bool DatabaseManager::open(QString filePath, QString fileName)
     return true;
 }
 
+/**
+ * @brief Commit all changes and close database connection.
+ */
 void DatabaseManager::close()
 {
     db.commit();
     db.close();
 }
 
+/**
+ * @brief Get the last database error.
+ * @return Last database error.
+ */
 QSqlError DatabaseManager::lastError()
 {
     return db.lastError();

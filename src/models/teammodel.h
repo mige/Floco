@@ -3,6 +3,9 @@
 
 #include <QSqlRelationalTableModel>
 
+/**
+ * @brief The TeamModel class provides the team model from the database.
+ */
 class TeamModel : public QSqlRelationalTableModel
 {
     Q_OBJECT

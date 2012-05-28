@@ -9,6 +9,9 @@ namespace Ui {
     class EditCategoriesDlg;
 }
 
+/**
+ * @brief The EditCategoriesDlg class provides the window for adding od editing categories of players.
+ */
 class EditCategoriesDlg : public QDialog
 {
     Q_OBJECT

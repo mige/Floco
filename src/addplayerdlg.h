@@ -8,6 +8,9 @@ namespace Ui {
     class AddPlayerDlg;
 }
 
+/**
+ * @brief The AddPlayerDlg class provides the window for adding or editing players.
+ */
 class AddPlayerDlg : public QDialog
 {
     Q_OBJECT

@@ -11,6 +11,9 @@ namespace Ui {
     class TeamsTab;
 }
 
+/**
+ * @brief The TeamsTab class provides tab widget for management players.
+ */
 class TeamsTab : public QWidget
 {
     Q_OBJECT

@@ -2,6 +2,12 @@
 
 #include <QStyle>
 
+/**
+ * @brief Creates a line edit widget with <i>Filter...</i> text and clear button.
+ *
+ * The <i>Filter...</i> text hides, if user wrote something and shows, when line edit is epmty.
+ * @param parent Parent widget.
+ */
 FiltrEdit::FiltrEdit(QWidget *parent) :
     QLineEdit(parent)
 {
@@ -23,6 +29,12 @@ FiltrEdit::FiltrEdit(QWidget *parent) :
                    qMax(msz.height(), clearButton->sizeHint().height() + frameWidth * 2 + 2));
 }
 
+/**
+ * @brief Reimplemented from QLineEdit::focusInEvent().
+ *
+ * Remove the <i>Filter...</i> text.
+ * @param e Event.
+ */
 void FiltrEdit::focusInEvent(QFocusEvent *e)
 {
     if(text() == tr("Filter..."))
@@ -33,6 +45,12 @@ void FiltrEdit::focusInEvent(QFocusEvent *e)
     QLineEdit::focusInEvent(e);
 }
 
+/**
+ * @brief Reimplemented from QLineEdit::focusOutEvent().
+ *
+ * Set the <i>Filter...</i> text.
+ * @param e Event.
+ */
 void FiltrEdit::focusOutEvent(QFocusEvent *e)
 {
     if(text().trimmed() == "")
@@ -43,6 +61,12 @@ void FiltrEdit::focusOutEvent(QFocusEvent *e)
     QLineEdit::focusOutEvent(e);
 }
 
+/**
+ * @brief Reimplemented from QLineEdit::resizeEvent().
+ *
+ * When resize moves the clear button to the correct position.
+ * @param e Event.
+ */
 void FiltrEdit::resizeEvent(QResizeEvent *e)
 {
     QSize sz = clearButton->sizeHint();
@@ -52,6 +76,10 @@ void FiltrEdit::resizeEvent(QResizeEvent *e)
     QLineEdit::resizeEvent(e);
 }
 
+/**
+ * @brief Shows/hides clear button.
+ * @param text Text in the filter edit.
+ */
 void FiltrEdit::updateCloseButton(const QString& text)
 {
     if(text.isEmpty() || text == tr("Filter..."))

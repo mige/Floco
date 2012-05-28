@@ -7,6 +7,12 @@
 #include <QSqlRecord>
 #include <QSqlQuery>
 
+/**
+ * @brief Creates a dialog for adding or editting team.
+ * @param teamModel Team model.
+ * @param teamRow Team ID to be edit. If set to -1, dialog provides form for adding team.
+ * @param parent Parent widget.
+ */
 AddTeamDlg::AddTeamDlg(QSqlTableModel *teamModel, int teamRow, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::AddTeamDlg)
@@ -89,6 +95,10 @@ AddTeamDlg::AddTeamDlg(QSqlTableModel *teamModel, int teamRow, QWidget *parent) 
     connect(ui->btnCancel, SIGNAL(clicked()), this, SLOT(close()));
 }
 
+/**
+ * @brief Checks the data from the form and when everything is ok, data is inserted into the model.
+ * @sa AddTeamDlg::addTeamAndClose()
+ */
 void AddTeamDlg::addTeam()
 {
     if(insertTeam())
@@ -98,11 +108,18 @@ void AddTeamDlg::addTeam()
     }
 }
 
+/**
+ * @brief Checks the data from the form and when everything is ok, data is inserted into the model and close dialog.
+ * @sa AddTeamDlg::addTeam()
+ */
 void AddTeamDlg::addTeamAndClose()
 {
     if(insertTeam()) close();
 }
 
+/**
+ * @brief Checks the data from the form and when everything is ok, data is edited in the model and close the dialog.
+ */
 void AddTeamDlg::saveTeam()
 {
     if(!checkForm(tr("Edit team"))) return;
@@ -162,6 +179,9 @@ QSqlRecord AddTeamDlg::createRecord()
     return record;
 }
 
+/**
+ * @brief Move players from right tree widget to left tree widget.
+ */
 void AddTeamDlg::moveToLeftTree()
 {
     QSqlRecord record = getTeamIdRecord(-1);
@@ -175,6 +195,9 @@ void AddTeamDlg::moveToLeftTree()
     playerLeftModel->select();
 }
 
+/**
+ * @brief Move players from left tree widget to right tree widget.
+ */
 void AddTeamDlg::moveToRightTree()
 {
     QSqlRecord record;
@@ -238,6 +261,9 @@ void AddTeamDlg::fixTeamId()
     }
 }
 
+/**
+ * @brief Destructs the dialog and fix team ID for players which is handled, but not the edited.
+ */
 AddTeamDlg::~AddTeamDlg()
 {
     fixTeamId();
