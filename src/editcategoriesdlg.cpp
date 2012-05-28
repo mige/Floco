@@ -9,9 +9,9 @@ EditCategoriesDlg::EditCategoriesDlg(QWidget *parent) :
 {    
     ui->setupUi(this);
 
-    connect(ui->btnAdd, SIGNAL(clicked()), this, SLOT(showAddCategory()));
+    connect(ui->btnAdd, SIGNAL(clicked()), this, SLOT(showAddCategoryDlg()));
     connect(ui->btnDelete, SIGNAL(clicked()), this, SLOT(deleteCategory()));
-    connect(ui->btnEdit, SIGNAL(clicked()), this, SLOT(editCategory()));
+    connect(ui->btnEdit, SIGNAL(clicked()), this, SLOT(showEditCategoryDlg()));
     connect(ui->radioMale, SIGNAL(toggled(bool)), this, SLOT(changeSex(bool)));
 
     model = new CategoryModel(this);
@@ -22,12 +22,17 @@ EditCategoriesDlg::EditCategoriesDlg(QWidget *parent) :
     ui->treeView->hideColumn(2);
 }
 
+//! Change sex for the filter categories.
+/*!
+  \param male boolean True if the male
+*/
 void EditCategoriesDlg::changeSex(bool male)
 {
     if(male) model->setFilter("male='true'");
     else model->setFilter("male='false'");
 }
 
+//! Delete the selected category
 void EditCategoriesDlg::deleteCategory()
 {
     QItemSelectionModel *selmodel = ui->treeView->selectionModel();
@@ -41,14 +46,14 @@ void EditCategoriesDlg::deleteCategory()
     model->submitAll();
 }
 
-void EditCategoriesDlg::showAddCategory()
+void EditCategoriesDlg::showAddCategoryDlg()
 {
     addCategoryDlg = new AddCategoryDlg(model);
     addCategoryDlg->exec();
     delete addCategoryDlg;
 }
 
-void EditCategoriesDlg::editCategory()
+void EditCategoriesDlg::showEditCategoryDlg()
 {
     QItemSelectionModel *selmodel = ui->treeView->selectionModel();
     QModelIndexList list = selmodel->selectedIndexes();

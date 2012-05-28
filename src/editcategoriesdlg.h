@@ -18,10 +18,10 @@ public:
     ~EditCategoriesDlg();
 
 public slots:
-    void showAddCategory();
+    void showAddCategoryDlg();
     void changeSex(bool male);
     void deleteCategory();
-    void editCategory();
+    void showEditCategoryDlg();
 
 private:
     Ui::EditCategoriesDlg   *ui;

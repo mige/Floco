@@ -36,7 +36,6 @@ void MainWindow::showAbout()
 
 MainWindow::~MainWindow()
 {
-    qDebug() << databaseManager->lastError();
     databaseManager->close();
     delete databaseManager;
     delete ui;
