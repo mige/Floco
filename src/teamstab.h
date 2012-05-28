@@ -32,7 +32,8 @@ private:
     QSqlTableModel  *teamModel;
     CategoryModel   *categoryModel;
     PlayerModel     *playerModel;
-    int             currentTeamRow;
+
+    int             currentTeamRow();
 };
 
 #endif // TEAMSTAB_H

@@ -45,8 +45,6 @@ TeamsTab::TeamsTab(QWidget *parent) :
     ui->treeView->hideColumn(6);
     ui->treeView->hideColumn(8);
     ui->treeView->hideColumn(10);
-
-    currentTeamRow = 0;
 }
 
 void TeamsTab::showAddTeamDlg()
@@ -59,6 +57,9 @@ void TeamsTab::showAddTeamDlg()
 
 void TeamsTab::showEditTeamDlg()
 {
+    int currentTeamRow = currentTeamRow();
+    if(currentTeamRow == -1) return;
+
     addTeamDlg = new AddTeamDlg(teamModel, currentTeamRow);
     addTeamDlg->exec();
     delete addTeamDlg;
@@ -67,7 +68,9 @@ void TeamsTab::showEditTeamDlg()
 
 void TeamsTab::deleteTeam()
 {
-    if(currentTeamRow == 0) return;
+    int currentTeamRow = currentTeamRow();
+    if(currentTeamRow == -1) return;
+
     if(QMessageBox::question(this, tr("Delete team"), tr("Really delete team?"), QMessageBox::Yes, QMessageBox::No) == QMessageBox::No) return;
 
     // remove id team from players
@@ -90,7 +93,6 @@ void TeamsTab::deleteTeam()
 
 void TeamsTab::changePlayerFilter(QModelIndex index)
 {
-    currentTeamRow = index.row();
     int idx = teamModel->record(index.row()).field("id").value().toInt();
     playerModel->setFilter("team_id="+QString::number(idx));
 }
@@ -105,6 +107,14 @@ void TeamsTab::changeTeamFilter(int index)
         teamModel->setFilter("team_category_id = "+QString::number(idx));
     }
     playerModel->setFilter("team_id=0");
+}
+
+int TeamsTab::currentTeamRow()
+{
+    QItemSelectionModel *selmodel = ui->listView->selectionModel();
+    QModelIndexList list = selmodel->selectedIndexes();
+    if(list.size() != 1) return -1;
+    return list.at(0).row();
 }
 
 TeamsTab::~TeamsTab()
