@@ -57,10 +57,10 @@ void TeamsTab::showAddTeamDlg()
 
 void TeamsTab::showEditTeamDlg()
 {
-    int currentTeamRow = currentTeamRow();
-    if(currentTeamRow == -1) return;
+    int teamRow = currentTeamRow();
+    if(teamRow == -1) return;
 
-    addTeamDlg = new AddTeamDlg(teamModel, currentTeamRow);
+    addTeamDlg = new AddTeamDlg(teamModel, teamRow);
     addTeamDlg->exec();
     delete addTeamDlg;
     playerModel->select();
@@ -68,8 +68,8 @@ void TeamsTab::showEditTeamDlg()
 
 void TeamsTab::deleteTeam()
 {
-    int currentTeamRow = currentTeamRow();
-    if(currentTeamRow == -1) return;
+    int teamRow = currentTeamRow();
+    if(teamRow == -1) return;
 
     if(QMessageBox::question(this, tr("Delete team"), tr("Really delete team?"), QMessageBox::Yes, QMessageBox::No) == QMessageBox::No) return;
 
@@ -87,7 +87,7 @@ void TeamsTab::deleteTeam()
 
     // delete team
 
-    teamModel->removeRow(currentTeamRow);
+    teamModel->removeRow(teamRow);
     teamModel->submitAll();
 }
 

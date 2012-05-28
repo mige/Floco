@@ -3,6 +3,8 @@
 
 #include <QMessageBox>
 
+//!
+
 EditCategoriesDlg::EditCategoriesDlg(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::EditCategoriesDlg)
@@ -46,6 +48,7 @@ void EditCategoriesDlg::deleteCategory()
     model->submitAll();
 }
 
+//! Show dialog for add category.
 void EditCategoriesDlg::showAddCategoryDlg()
 {
     addCategoryDlg = new AddCategoryDlg(model);
@@ -53,6 +56,7 @@ void EditCategoriesDlg::showAddCategoryDlg()
     delete addCategoryDlg;
 }
 
+//! Show dialog for edit category.
 void EditCategoriesDlg::showEditCategoryDlg()
 {
     QItemSelectionModel *selmodel = ui->treeView->selectionModel();
@@ -66,6 +70,7 @@ void EditCategoriesDlg::showEditCategoryDlg()
     }
 }
 
+//! The destructor.
 EditCategoriesDlg::~EditCategoriesDlg()
 {
     delete model;
