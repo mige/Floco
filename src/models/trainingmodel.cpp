@@ -12,8 +12,7 @@ TrainingModel::TrainingModel(QObject *parent) :
     select();
 
     setHeaderData(0, Qt::Horizontal, tr("ID"));
-    setHeaderData(1, Qt::Horizontal, tr("Date"));
-    setHeaderData(2, Qt::Horizontal, tr("Time"));
-    setHeaderData(3, Qt::Horizontal, tr("Place"));
-    setHeaderData(4, Qt::Horizontal, tr("Canceled"));
+    setHeaderData(1, Qt::Horizontal, tr("Datetime"));
+    setHeaderData(2, Qt::Horizontal, tr("Place"));
+    setHeaderData(3, Qt::Horizontal, tr("Canceled"));
 }
