@@ -12,6 +12,7 @@ TrainingsTab::TrainingsTab(QWidget *parent) :
     ui->setupUi(this);
 
     connect(ui->btnAdd, SIGNAL(clicked()), this, SLOT(showAddTrainingDlg()));
+    connect(ui->btnEdit, SIGNAL(clicked()), this, SLOT(showEditTrainingDlg()));
 
     teamModel = new TeamModel;
     trainingModel = new TrainingModel;
@@ -29,9 +30,17 @@ TrainingsTab::TrainingsTab(QWidget *parent) :
  */
 void TrainingsTab::showAddTrainingDlg()
 {
-    addTrainingDlg = new AddTrainingDlg;
+    addTrainingDlg = new AddTrainingDlg(trainingModel);
     addTrainingDlg->exec();
     delete addTrainingDlg;
+}
+
+/**
+ * @brief Displays the dialog for editting selected training.
+ */
+void TrainingsTab::showEditTrainingDlg()
+{
+
 }
 
 /**
