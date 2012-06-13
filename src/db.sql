@@ -1,8 +1,8 @@
--- Creator:       MySQL Workbench 5.2.37/ExportSQLite plugin 2009.12.02
+-- Creator:       MySQL Workbench 5.2.40/ExportSQLite plugin 2009.12.02
 -- Author:        Unknown
 -- Caption:       New Model
 -- Project:       Name of the project
--- Changed:       2012-02-09 18:22
+-- Changed:       2012-06-13 20:01
 -- Created:       2011-08-31 17:30
 PRAGMA foreign_keys = OFF;
 
@@ -32,8 +32,7 @@ CREATE TABLE "team"(
 CREATE INDEX "team.fk_team_team_category1" ON "team"("team_category_id");
 CREATE TABLE "training"(
   "id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-  "date" DATE NOT NULL,
-  "time" TIME NOT NULL,
+  "datetime" DATETIME NOT NULL,
   "place" VARCHAR(150) NOT NULL,
   "canceled" BOOLEAN NOT NULL,
   "team_id" INTEGER NOT NULL,
