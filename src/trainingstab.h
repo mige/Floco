@@ -24,6 +24,7 @@ public:
 public slots:
     void showAddTrainingDlg();
     void showEditTrainingDlg();
+    void deleteTraining();
 
 private:
     Ui::TrainingsTab    *ui;

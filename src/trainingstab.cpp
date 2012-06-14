@@ -1,6 +1,8 @@
 #include "trainingstab.h"
 #include "ui_trainingstab.h"
 
+#include <QMessageBox>
+
 /**
  * @brief Creates a tab widget for management training.
  * @param parent Parent widget.
@@ -13,6 +15,7 @@ TrainingsTab::TrainingsTab(QWidget *parent) :
 
     connect(ui->btnAdd, SIGNAL(clicked()), this, SLOT(showAddTrainingDlg()));
     connect(ui->btnEdit, SIGNAL(clicked()), this, SLOT(showEditTrainingDlg()));
+    connect(ui->btnDelete, SIGNAL(clicked()), this, SLOT(deleteTraining()));
 
     teamModel = new TeamModel;
     trainingModel = new TrainingModel;
@@ -41,6 +44,22 @@ void TrainingsTab::showAddTrainingDlg()
 void TrainingsTab::showEditTrainingDlg()
 {
 
+}
+
+/**
+ * @brief Deletes the selected trainings.
+ */
+void TrainingsTab::deleteTraining()
+{
+    QItemSelectionModel *selmodel = ui->treeView->selectionModel();
+    QModelIndexList list = selmodel->selectedIndexes();
+
+    if(list.size() > 0)
+        if(QMessageBox::question(this, tr("Delete trainings"), tr("Really delete trainings?"), QMessageBox::Yes, QMessageBox::No) == QMessageBox::No) return;
+
+    for(int i = 0; i < list.size(); i++)
+        trainingModel->removeRow(list.at(i).row());
+    trainingModel->submitAll();
 }
 
 /**
