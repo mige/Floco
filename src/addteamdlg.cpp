@@ -187,7 +187,7 @@ void AddTeamDlg::moveToLeftTree()
     QSqlRecord record = getTeamIdRecord(-1);
 
     QItemSelectionModel *selmodel = ui->treePlayersWithoutTeam->selectionModel();
-    QModelIndexList list = selmodel->selectedIndexes();
+    QModelIndexList list = selmodel->selectedRows();
 
     for(int i = 0; i < list.size(); i++)
         playerRightModel->setRecord(list.at(i).row(), record);
@@ -207,7 +207,7 @@ void AddTeamDlg::moveToRightTree()
         record = getTeamIdRecord(0);
 
     QItemSelectionModel *selmodel = ui->treePlayersInTeam->selectionModel();
-    QModelIndexList list = selmodel->selectedIndexes();
+    QModelIndexList list = selmodel->selectedRows();
 
     for(int i = 0; i < list.size(); i++)
         playerLeftModel->setRecord(list.at(i).row(), record);

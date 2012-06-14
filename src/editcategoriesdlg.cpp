@@ -44,7 +44,7 @@ void EditCategoriesDlg::changeSex(bool male)
 void EditCategoriesDlg::deleteCategory()
 {
     QItemSelectionModel *selmodel = ui->treeView->selectionModel();
-    QModelIndexList list = selmodel->selectedIndexes();
+    QModelIndexList list = selmodel->selectedRows();
 
     if(list.size() > 0)
         if(QMessageBox::question(this, tr("Delete category"), tr("Really delete category?"), QMessageBox::Yes, QMessageBox::No) == QMessageBox::No) return;

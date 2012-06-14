@@ -133,7 +133,7 @@ void TeamsTab::changeTeamFilter(int index)
 int TeamsTab::currentTeamRow()
 {
     QItemSelectionModel *selmodel = ui->listView->selectionModel();
-    QModelIndexList list = selmodel->selectedIndexes();
+    QModelIndexList list = selmodel->selectedRows();
     if(list.size() != 1) return -1;
     return list.at(0).row();
 }
