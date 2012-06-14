@@ -24,8 +24,8 @@ public slots:
     void showAddPlayerDlg();
     void editPlayer();
     void deletePlayer();
-    void showDetails(QModelIndex index);
-    void showPlayersList();
+    void showDetailsDialog(QModelIndex index);
+    void showPlayersDetails();
     void changeFilter(const QString& text);
 
 private:

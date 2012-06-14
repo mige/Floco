@@ -1,6 +1,7 @@
 #include "playerstab.h"
 #include "ui_playerstab.h"
 
+#include <playerdetails.h>
 #include <QDate>
 #include <QMessageBox>
 #include <QSqlField>
@@ -20,9 +21,9 @@ PlayersTab::PlayersTab(QWidget *parent) :
     connect(ui->btnAdd, SIGNAL(clicked()), this, SLOT(showAddPlayerDlg()));
     connect(ui->btnEdit, SIGNAL(clicked()), this, SLOT(editPlayer()));
     connect(ui->btnDelete, SIGNAL(clicked()), this, SLOT(deletePlayer()));
-    connect(ui->treePlayers, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(showDetails(QModelIndex)));
-    connect(ui->btnBackToPlayersList, SIGNAL(clicked()), this, SLOT(showPlayersList()));
+    connect(ui->treePlayers, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(showDetailsDialog(QModelIndex)));
     connect(ui->editFiltr, SIGNAL(textChanged(QString)), this, SLOT(changeFilter(QString)));
+    connect(ui->btnShowPlayersDetails, SIGNAL(clicked()), this, SLOT(showPlayersDetails()));
 
     model = new PlayerModel(this);
 
@@ -52,7 +53,7 @@ void PlayersTab::showAddPlayerDlg()
 void PlayersTab::editPlayer()
 {
     QItemSelectionModel *selmodel = ui->treePlayers->selectionModel();
-    QModelIndexList list = selmodel->selectedIndexes();
+    QModelIndexList list = selmodel->selectedRows();
 
     if(list.size() > 0)
     {
@@ -68,7 +69,7 @@ void PlayersTab::editPlayer()
 void PlayersTab::deletePlayer()
 {
     QItemSelectionModel *selmodel = ui->treePlayers->selectionModel();
-    QModelIndexList list = selmodel->selectedIndexes();
+    QModelIndexList list = selmodel->selectedRows();
 
     if(list.size() > 0)
         if(QMessageBox::question(this, tr("Delete players"), tr("Really delete players?"), QMessageBox::Yes, QMessageBox::No) == QMessageBox::No) return;
@@ -79,38 +80,31 @@ void PlayersTab::deletePlayer()
 }
 
 /**
- * @brief Displays detailed info player by index.
+ * @brief Displays detailed info player by index on modeless dialog.
  * @param index Index player in model.
  */
-void PlayersTab::showDetails(QModelIndex index)
+void PlayersTab::showDetailsDialog(QModelIndex index)
 {
     QSqlRecord record = model->record(index.row());
 
-    ui->txtPlayerName->setText(record.field("firstname").value().toString()+" "+record.field("surname").value().toString());
-    ui->txtNumber->setText(tr("Number: <b>")+QString::number(record.field("number").value().toInt()));
-    ui->txtPost->setText(tr("Post: <b>")+record.field("post").value().toString());
-    ui->txtBirth->setText(tr("Day of birth: <b>")+record.field("birth").value().toDate().toString("d.M.yyyy"));
-    ui->txtAddress->setText(tr("Address: <b>")+record.field("address").value().toString());
-    ui->txtPhone->setText(tr("Phone: <b>")+record.field("phone").value().toString());
-    ui->txtMail->setText(tr("E-mail: <b>")+record.field("email").value().toString());
-
-    QByteArray photoData = record.field("photo").value().toByteArray();
-    QPixmap photo;
-
-    if(photoData.isNull()) photo.load(":/icons/icons/player-128.png");
-    else photo.loadFromData(record.field("photo").value().toByteArray());
-
-    ui->photo->setPixmap(photo);
-
-    ui->stackedWidget->setCurrentIndex(1);
+    PlayerDetails *pd = new PlayerDetails(record, this);
+    pd->setAttribute(Qt::WA_DeleteOnClose);
+    pd->show();
+    pd->raise();
+    pd->activateWindow();
 }
 
 /**
- * @brief Displays players list.
+ * @brief Displays detailed info player on modeless dialog.
+ * @sa showDetailsDialog()
  */
-void PlayersTab::showPlayersList()
+void PlayersTab::showPlayersDetails()
 {
-    ui->stackedWidget->setCurrentIndex(0);
+    QItemSelectionModel *selmodel = ui->treePlayers->selectionModel();
+    QModelIndexList list = selmodel->selectedRows();
+
+    for(int i = 0; i < list.size(); i++)
+        showDetailsDialog(list.at(i));
 }
 
 /**
