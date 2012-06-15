@@ -84,7 +84,7 @@ bool TrainingModel::setData(const QModelIndex &index, const QVariant &value, int
 }
 
 /**
- * @brief Flags for model index.
+ * @brief Flags for model item from model index.
  * @param index Model index
  * @return Item flags
  */
