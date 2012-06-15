@@ -50,6 +50,7 @@ AddTrainingDlg::AddTrainingDlg(TrainingModel *model, int trainingRow, QWidget *p
         ui->editDate->setDate(datetime.date());
         ui->editTime->setTime(datetime.time());
         ui->editPlace->setText(record.field("place").value().toString());
+        ui->chckBoxCanceled->setChecked(record.field("canceled").value().toBool());
 
         ui->checkBoxEveryWeek->setVisible(false);
         ui->checkBoxEveryWeek->setChecked(false);
