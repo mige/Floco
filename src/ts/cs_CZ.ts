@@ -6,7 +6,7 @@
     <name>AddCategoryDlg</name>
     <message>
         <location filename="../ui/addcategorydlg.ui" line="14"/>
-        <location filename="../addcategorydlg.cpp" line="70"/>
+        <location filename="../addcategorydlg.cpp" line="87"/>
         <source>Add category</source>
         <translation>Přidat kategorii</translation>
     </message>
@@ -61,13 +61,13 @@
         <translation>Zrušit</translation>
     </message>
     <message>
-        <location filename="../addcategorydlg.cpp" line="27"/>
-        <location filename="../addcategorydlg.cpp" line="60"/>
+        <location filename="../addcategorydlg.cpp" line="33"/>
+        <location filename="../addcategorydlg.cpp" line="77"/>
         <source>Edit category</source>
         <translation>Upravit kategorii</translation>
     </message>
     <message>
-        <location filename="../addcategorydlg.cpp" line="112"/>
+        <location filename="../addcategorydlg.cpp" line="129"/>
         <source>You must specified category name.</source>
         <translation>Musíte vyplnit jméno kategorie.</translation>
     </message>
@@ -77,8 +77,8 @@
     <message>
         <location filename="../ui/addplayerdlg.ui" line="14"/>
         <location filename="../ui/addplayerdlg.ui" line="252"/>
-        <location filename="../addplayerdlg.cpp" line="57"/>
-        <location filename="../addplayerdlg.cpp" line="162"/>
+        <location filename="../addplayerdlg.cpp" line="63"/>
+        <location filename="../addplayerdlg.cpp" line="179"/>
         <source>Add player</source>
         <translation>Přidat hráče</translation>
     </message>
@@ -124,13 +124,13 @@
     </message>
     <message>
         <location filename="../ui/addplayerdlg.ui" line="170"/>
-        <location filename="../addplayerdlg.cpp" line="43"/>
+        <location filename="../addplayerdlg.cpp" line="49"/>
         <source>defender</source>
         <translation>obránce</translation>
     </message>
     <message>
         <location filename="../ui/addplayerdlg.ui" line="175"/>
-        <location filename="../addplayerdlg.cpp" line="44"/>
+        <location filename="../addplayerdlg.cpp" line="50"/>
         <source>forward</source>
         <translation>útočník</translation>
     </message>
@@ -170,28 +170,28 @@
         <translation>Zrušit</translation>
     </message>
     <message>
-        <location filename="../addplayerdlg.cpp" line="29"/>
-        <location filename="../addplayerdlg.cpp" line="139"/>
+        <location filename="../addplayerdlg.cpp" line="35"/>
+        <location filename="../addplayerdlg.cpp" line="156"/>
         <source>Edit player</source>
         <translation>Upravit hráče</translation>
     </message>
     <message>
-        <location filename="../addplayerdlg.cpp" line="152"/>
+        <location filename="../addplayerdlg.cpp" line="169"/>
         <source>You must specified firstname and surname.</source>
         <translation>Musíte vyplnit jméno a příjmení.</translation>
     </message>
     <message>
-        <location filename="../addplayerdlg.cpp" line="162"/>
+        <location filename="../addplayerdlg.cpp" line="179"/>
         <source>Selected file does not exists.</source>
         <translation>Vybraný soubor neexistuje.</translation>
     </message>
     <message>
-        <location filename="../addplayerdlg.cpp" line="172"/>
+        <location filename="../addplayerdlg.cpp" line="192"/>
         <source>Open Image</source>
         <translation>Vybrat fotografii</translation>
     </message>
     <message>
-        <location filename="../addplayerdlg.cpp" line="172"/>
+        <location filename="../addplayerdlg.cpp" line="192"/>
         <source>Image Files (*.png *.jpg *.bmp)</source>
         <translation>Soubory obrázků</translation>
     </message>
@@ -200,7 +200,7 @@
     <name>AddTeamDlg</name>
     <message>
         <location filename="../ui/addteamdlg.ui" line="14"/>
-        <location filename="../addteamdlg.cpp" line="130"/>
+        <location filename="../addteamdlg.cpp" line="147"/>
         <source>Add team</source>
         <translation>Přidat tým</translation>
     </message>
@@ -253,13 +253,13 @@
         <translation>Zrušit</translation>
     </message>
     <message>
-        <location filename="../addteamdlg.cpp" line="39"/>
-        <location filename="../addteamdlg.cpp" line="108"/>
+        <location filename="../addteamdlg.cpp" line="45"/>
+        <location filename="../addteamdlg.cpp" line="125"/>
         <source>Edit team</source>
         <translation>Upravit tým</translation>
     </message>
     <message>
-        <location filename="../addteamdlg.cpp" line="199"/>
+        <location filename="../addteamdlg.cpp" line="222"/>
         <source>You must specified team name.</source>
         <translation>Musíte vyplnit jméno týmu.</translation>
     </message>
@@ -267,17 +267,18 @@
 <context>
     <name>AddTrainingDlg</name>
     <message>
-        <location filename="../ui/addtrainingdlg.ui" line="14"/>
+        <location filename="../ui/addtrainingdlg.ui" line="12"/>
+        <location filename="../addtrainingdlg.cpp" line="99"/>
         <source>Add training</source>
         <translation>Přidat trénink</translation>
     </message>
     <message>
-        <location filename="../ui/addtrainingdlg.ui" line="26"/>
+        <location filename="../ui/addtrainingdlg.ui" line="24"/>
         <source>Team:</source>
         <translation>Tým:</translation>
     </message>
     <message>
-        <location filename="../ui/addtrainingdlg.ui" line="36"/>
+        <location filename="../ui/addtrainingdlg.ui" line="34"/>
         <source>Date:</source>
         <translation>Datum:</translation>
     </message>
@@ -322,34 +323,55 @@
         <translation>Neděle</translation>
     </message>
     <message>
-        <location filename="../ui/addtrainingdlg.ui" line="103"/>
+        <location filename="../ui/addtrainingdlg.ui" line="114"/>
+        <source>d.M.yyyy</source>
+        <translation>d.M.yyyy</translation>
+    </message>
+    <message>
+        <location filename="../ui/addtrainingdlg.ui" line="138"/>
         <source>Time:</source>
         <translation>Čas:</translation>
     </message>
     <message>
-        <location filename="../ui/addtrainingdlg.ui" line="113"/>
+        <location filename="../ui/addtrainingdlg.ui" line="156"/>
         <source>Place:</source>
         <translation>Místo:</translation>
     </message>
     <message>
-        <location filename="../ui/addtrainingdlg.ui" line="140"/>
+        <location filename="../ui/addtrainingdlg.ui" line="171"/>
+        <source>Canceled</source>
+        <translation>Zrušeno</translation>
+    </message>
+    <message>
+        <location filename="../ui/addtrainingdlg.ui" line="197"/>
         <source>Add</source>
         <translation>Přidat</translation>
     </message>
     <message>
-        <location filename="../ui/addtrainingdlg.ui" line="151"/>
+        <location filename="../ui/addtrainingdlg.ui" line="208"/>
         <source>Add and close</source>
         <translation>Přidat a zavřít</translation>
     </message>
     <message>
-        <location filename="../ui/addtrainingdlg.ui" line="162"/>
+        <location filename="../ui/addtrainingdlg.ui" line="219"/>
         <source>Save</source>
         <translation>Uložit</translation>
     </message>
     <message>
-        <location filename="../ui/addtrainingdlg.ui" line="173"/>
+        <location filename="../ui/addtrainingdlg.ui" line="230"/>
         <source>Cancel</source>
         <translation>Zrušit</translation>
+    </message>
+    <message>
+        <location filename="../addtrainingdlg.cpp" line="44"/>
+        <location filename="../addtrainingdlg.cpp" line="87"/>
+        <source>Edit training</source>
+        <translation>Upravit trénink</translation>
+    </message>
+    <message>
+        <location filename="../addtrainingdlg.cpp" line="179"/>
+        <source>You must specified place.</source>
+        <translation>Musíte vyplnit místo.</translation>
     </message>
 </context>
 <context>
@@ -363,7 +385,7 @@
 <context>
     <name>CategoryModel</name>
     <message>
-        <location filename="../models/categorymodel.cpp" line="25"/>
+        <location filename="../models/categorymodel.cpp" line="35"/>
         <source>adult</source>
         <translation>dospělý</translation>
     </message>
@@ -406,12 +428,12 @@
         <translation>Zavřít</translation>
     </message>
     <message>
-        <location filename="../editcategoriesdlg.cpp" line="37"/>
+        <location filename="../editcategoriesdlg.cpp" line="50"/>
         <source>Delete category</source>
         <translation>Smazat kategorii</translation>
     </message>
     <message>
-        <location filename="../editcategoriesdlg.cpp" line="37"/>
+        <location filename="../editcategoriesdlg.cpp" line="50"/>
         <source>Really delete category?</source>
         <translation>Opravdu chcete smazat kategorii?</translation>
     </message>
@@ -419,9 +441,9 @@
 <context>
     <name>FiltrEdit</name>
     <message>
-        <location filename="../widget/filtredit.cpp" line="28"/>
-        <location filename="../widget/filtredit.cpp" line="41"/>
-        <location filename="../widget/filtredit.cpp" line="57"/>
+        <location filename="../widget/filtredit.cpp" line="40"/>
+        <location filename="../widget/filtredit.cpp" line="59"/>
+        <location filename="../widget/filtredit.cpp" line="85"/>
         <source>Filter...</source>
         <translation>Filtr...</translation>
     </message>
@@ -430,7 +452,7 @@
     <name>MainWindow</name>
     <message>
         <location filename="../ui/mainwindow.ui" line="14"/>
-        <location filename="../mainwindow.cpp" line="16"/>
+        <location filename="../mainwindow.cpp" line="20"/>
         <source>Floco</source>
         <translation>Floco</translation>
     </message>
@@ -485,19 +507,102 @@
         <translation>Upravit kategorie</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="16"/>
+        <location filename="../mainwindow.cpp" line="20"/>
         <source>Cannot open database file!</source>
         <translation>Nelze otevřít soubor s databází!</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="34"/>
+        <location filename="../mainwindow.cpp" line="44"/>
         <source>About Floco</source>
         <translation>O Floco</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="34"/>
+        <location filename="../mainwindow.cpp" line="44"/>
         <source>Created by Aleš Nejdr</source>
         <translation>Vytvořil Aleš Nejdr</translation>
+    </message>
+</context>
+<context>
+    <name>PlayerDetails</name>
+    <message>
+        <location filename="../ui/playerdetails.ui" line="14"/>
+        <source>Player details</source>
+        <translation>Detaily hráče</translation>
+    </message>
+    <message>
+        <location filename="../ui/playerdetails.ui" line="57"/>
+        <source>Player name</source>
+        <translation>Jméno hráče</translation>
+    </message>
+    <message>
+        <location filename="../ui/playerdetails.ui" line="64"/>
+        <source>Number:</source>
+        <translation>Číslo:</translation>
+    </message>
+    <message>
+        <location filename="../ui/playerdetails.ui" line="71"/>
+        <source>Post:</source>
+        <translation>Post:</translation>
+    </message>
+    <message>
+        <location filename="../ui/playerdetails.ui" line="78"/>
+        <source>Day of birth:</source>
+        <translation>Datum narození:</translation>
+    </message>
+    <message>
+        <location filename="../ui/playerdetails.ui" line="85"/>
+        <source>Address:</source>
+        <translation>Adresa:</translation>
+    </message>
+    <message>
+        <location filename="../ui/playerdetails.ui" line="92"/>
+        <source>Phone:</source>
+        <translation>Telefon:</translation>
+    </message>
+    <message>
+        <location filename="../ui/playerdetails.ui" line="99"/>
+        <source>E-mail:</source>
+        <translation>E-mail:</translation>
+    </message>
+    <message>
+        <location filename="../ui/playerdetails.ui" line="117"/>
+        <source>Statistics</source>
+        <translation>Statistiky</translation>
+    </message>
+    <message>
+        <location filename="../playerdetails.cpp" line="17"/>
+        <source>Player details - </source>
+        <translation>Detaily hráče - </translation>
+    </message>
+    <message>
+        <location filename="../playerdetails.cpp" line="20"/>
+        <source>Number: &lt;b&gt;</source>
+        <translation>Číslo: &lt;b&gt;</translation>
+    </message>
+    <message>
+        <location filename="../playerdetails.cpp" line="21"/>
+        <source>Post: &lt;b&gt;</source>
+        <translation>Post: &lt;b&gt;</translation>
+    </message>
+    <message>
+        <location filename="../playerdetails.cpp" line="22"/>
+        <source>Day of birth: &lt;b&gt;</source>
+        <translation>Datum narození: &lt;b&gt;</translation>
+    </message>
+    <message>
+        <location filename="../playerdetails.cpp" line="23"/>
+        <source>Address: &lt;b&gt;</source>
+        <translation>Adresa: &lt;b&gt;</translation>
+    </message>
+    <message>
+        <location filename="../playerdetails.cpp" line="24"/>
+        <source>Phone: &lt;b&gt;</source>
+        <translation>Telefon: &lt;b&gt;</translation>
+    </message>
+    <message>
+        <location filename="../playerdetails.cpp" line="25"/>
+        <source>E-mail: &lt;b&gt;</source>
+        <translation>E-mail: &lt;b&gt;</translation>
     </message>
 </context>
 <context>
@@ -508,142 +613,131 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../ui/playerstab.ui" line="32"/>
+        <location filename="../ui/playerstab.ui" line="22"/>
         <source>Add player</source>
         <translation>Přidat hráče</translation>
     </message>
     <message>
-        <location filename="../ui/playerstab.ui" line="52"/>
+        <location filename="../ui/playerstab.ui" line="42"/>
         <source>Edit player</source>
         <translation>Upravit hráče</translation>
     </message>
     <message>
-        <location filename="../ui/playerstab.ui" line="72"/>
-        <location filename="../playerstab.cpp" line="61"/>
+        <location filename="../ui/playerstab.ui" line="62"/>
+        <location filename="../playerstab.cpp" line="75"/>
         <source>Delete players</source>
         <translation>Smazat hráče</translation>
+    </message>
+    <message>
+        <location filename="../ui/playerstab.ui" line="146"/>
+        <source>Show player&apos;s details</source>
+        <translation>Zobrazit detaily hráče</translation>
     </message>
     <message>
         <source>Filtr</source>
         <translation type="obsolete">FIltr</translation>
     </message>
     <message>
-        <location filename="../ui/playerstab.ui" line="110"/>
-        <location filename="../playerstab.cpp" line="98"/>
+        <location filename="../ui/playerstab.ui" line="100"/>
+        <location filename="../playerstab.cpp" line="116"/>
         <source>Filter...</source>
         <translation>Filtr...</translation>
     </message>
     <message>
-        <location filename="../ui/playerstab.ui" line="147"/>
         <source>Show players list</source>
-        <translation>Zobrazit seznam hráčů</translation>
+        <translation type="obsolete">Zobrazit seznam hráčů</translation>
     </message>
     <message>
-        <location filename="../ui/playerstab.ui" line="150"/>
         <source>Players list</source>
-        <translation>Seznam hráčů</translation>
+        <translation type="obsolete">Seznam hráčů</translation>
     </message>
     <message>
-        <location filename="../ui/playerstab.ui" line="215"/>
         <source>Player name</source>
-        <translation>Jméno hráče</translation>
+        <translation type="obsolete">Jméno hráče</translation>
     </message>
     <message>
-        <location filename="../ui/playerstab.ui" line="222"/>
         <source>Number:</source>
-        <translation>Číslo:</translation>
+        <translation type="obsolete">Číslo:</translation>
     </message>
     <message>
-        <location filename="../ui/playerstab.ui" line="229"/>
         <source>Post:</source>
-        <translation>Post:</translation>
+        <translation type="obsolete">Post:</translation>
     </message>
     <message>
-        <location filename="../ui/playerstab.ui" line="236"/>
         <source>Day of birth:</source>
-        <translation>Datum narození:</translation>
+        <translation type="obsolete">Datum narození:</translation>
     </message>
     <message>
-        <location filename="../ui/playerstab.ui" line="243"/>
         <source>Address:</source>
-        <translation>Adresa:</translation>
+        <translation type="obsolete">Adresa:</translation>
     </message>
     <message>
-        <location filename="../ui/playerstab.ui" line="250"/>
         <source>Phone:</source>
-        <translation>Telefon:</translation>
+        <translation type="obsolete">Telefon:</translation>
     </message>
     <message>
-        <location filename="../ui/playerstab.ui" line="257"/>
         <source>E-mail:</source>
-        <translation>E-mail:</translation>
+        <translation type="obsolete">E-mail:</translation>
     </message>
     <message>
-        <location filename="../ui/playerstab.ui" line="275"/>
         <source>Statistics</source>
-        <translation>Statistiky</translation>
+        <translation type="obsolete">Statistiky</translation>
     </message>
     <message>
-        <location filename="../playerstab.cpp" line="61"/>
+        <location filename="../playerstab.cpp" line="75"/>
         <source>Really delete players?</source>
         <translation>Opravdu chcete smazat hráče?</translation>
     </message>
     <message>
-        <location filename="../playerstab.cpp" line="73"/>
         <source>Number: &lt;b&gt;</source>
-        <translation>Číslo: &lt;b&gt;</translation>
+        <translation type="obsolete">Číslo: &lt;b&gt;</translation>
     </message>
     <message>
-        <location filename="../playerstab.cpp" line="74"/>
         <source>Post: &lt;b&gt;</source>
-        <translation>Post: &lt;b&gt;</translation>
+        <translation type="obsolete">Post: &lt;b&gt;</translation>
     </message>
     <message>
-        <location filename="../playerstab.cpp" line="75"/>
         <source>Day of birth: &lt;b&gt;</source>
-        <translation>Datum narození: &lt;b&gt;</translation>
+        <translation type="obsolete">Datum narození: &lt;b&gt;</translation>
     </message>
     <message>
-        <location filename="../playerstab.cpp" line="76"/>
         <source>Address: &lt;b&gt;</source>
-        <translation>Adresa: &lt;b&gt;</translation>
+        <translation type="obsolete">Adresa: &lt;b&gt;</translation>
     </message>
     <message>
-        <location filename="../playerstab.cpp" line="77"/>
         <source>Phone: &lt;b&gt;</source>
-        <translation>Telefon: &lt;b&gt;</translation>
+        <translation type="obsolete">Telefon: &lt;b&gt;</translation>
     </message>
     <message>
-        <location filename="../playerstab.cpp" line="78"/>
         <source>E-mail: &lt;b&gt;</source>
-        <translation>E-mail: &lt;b&gt;</translation>
+        <translation type="obsolete">E-mail: &lt;b&gt;</translation>
     </message>
 </context>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../models/categorymodel.cpp" line="13"/>
-        <location filename="../models/playermodel.cpp" line="10"/>
+        <location filename="../models/categorymodel.cpp" line="17"/>
+        <location filename="../models/playermodel.cpp" line="14"/>
         <source>ID</source>
         <translation>ID</translation>
     </message>
     <message>
-        <location filename="../models/categorymodel.cpp" line="14"/>
+        <location filename="../models/categorymodel.cpp" line="18"/>
         <source>Name</source>
         <translation>Jméno</translation>
     </message>
     <message>
-        <location filename="../models/categorymodel.cpp" line="15"/>
+        <location filename="../models/categorymodel.cpp" line="19"/>
         <source>Max age</source>
         <translation>Maximální věk</translation>
     </message>
     <message>
-        <location filename="../models/playermodel.cpp" line="11"/>
+        <location filename="../models/playermodel.cpp" line="15"/>
         <source>Firstname</source>
         <translation>Jméno</translation>
     </message>
     <message>
-        <location filename="../models/playermodel.cpp" line="12"/>
+        <location filename="../models/playermodel.cpp" line="16"/>
         <source>Surname</source>
         <translation>Příjmení</translation>
     </message>
@@ -652,39 +746,80 @@
         <translation type="obsolete">Datum narození</translation>
     </message>
     <message>
-        <location filename="../models/playermodel.cpp" line="13"/>
+        <location filename="../models/playermodel.cpp" line="17"/>
         <source>Day of birth</source>
         <translation>Datum narození</translation>
     </message>
     <message>
-        <location filename="../models/playermodel.cpp" line="14"/>
+        <location filename="../models/playermodel.cpp" line="18"/>
         <source>Address</source>
         <translation>Adresa</translation>
     </message>
     <message>
-        <location filename="../models/playermodel.cpp" line="15"/>
+        <location filename="../models/playermodel.cpp" line="19"/>
         <source>E-mail</source>
         <translation>E-mail</translation>
     </message>
     <message>
-        <location filename="../models/playermodel.cpp" line="16"/>
+        <location filename="../models/playermodel.cpp" line="20"/>
         <source>Phone</source>
         <translation>Telefon</translation>
     </message>
     <message>
-        <location filename="../models/playermodel.cpp" line="17"/>
+        <location filename="../models/playermodel.cpp" line="21"/>
         <source>Number</source>
         <translation>Číslo</translation>
     </message>
     <message>
-        <location filename="../models/playermodel.cpp" line="18"/>
+        <location filename="../models/playermodel.cpp" line="22"/>
         <source>Photo</source>
         <translation>Fotografie</translation>
     </message>
     <message>
-        <location filename="../models/playermodel.cpp" line="19"/>
+        <location filename="../models/playermodel.cpp" line="23"/>
         <source>Post</source>
         <translation>Post</translation>
+    </message>
+</context>
+<context>
+    <name>RecordAttendanceDlg</name>
+    <message>
+        <location filename="../ui/recordattendancedlg.ui" line="14"/>
+        <source>Record attendance</source>
+        <translation>Zaznamenat docházku</translation>
+    </message>
+    <message>
+        <location filename="../ui/recordattendancedlg.ui" line="26"/>
+        <source>Training:</source>
+        <translation>Trénink:</translation>
+    </message>
+    <message>
+        <location filename="../ui/recordattendancedlg.ui" line="39"/>
+        <source>TextLabel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/recordattendancedlg.ui" line="79"/>
+        <source>Save</source>
+        <translation>Uložit</translation>
+    </message>
+    <message>
+        <location filename="../ui/recordattendancedlg.ui" line="90"/>
+        <source>Cancel</source>
+        <translation>Zrušit</translation>
+    </message>
+</context>
+<context>
+    <name>TeamModel</name>
+    <message>
+        <location filename="../models/teammodel.cpp" line="14"/>
+        <source>ID</source>
+        <translation>ID</translation>
+    </message>
+    <message>
+        <location filename="../models/teammodel.cpp" line="15"/>
+        <source>Name</source>
+        <translation>Jméno</translation>
     </message>
 </context>
 <context>
@@ -715,14 +850,43 @@
         <translation>Všechny kategorie</translation>
     </message>
     <message>
-        <location filename="../teamstab.cpp" line="71"/>
+        <location filename="../teamstab.cpp" line="87"/>
         <source>Delete team</source>
         <translation>Smazat tým</translation>
     </message>
     <message>
-        <location filename="../teamstab.cpp" line="71"/>
+        <location filename="../teamstab.cpp" line="87"/>
         <source>Really delete team?</source>
         <translation>Opravdu chcete smazat tým?</translation>
+    </message>
+</context>
+<context>
+    <name>TrainingModel</name>
+    <message>
+        <location filename="../models/trainingmodel.cpp" line="17"/>
+        <source>ID</source>
+        <translation>ID</translation>
+    </message>
+    <message>
+        <location filename="../models/trainingmodel.cpp" line="18"/>
+        <source>Datetime</source>
+        <translation>Datum a čas</translation>
+    </message>
+    <message>
+        <location filename="../models/trainingmodel.cpp" line="19"/>
+        <source>Place</source>
+        <translation>Místo</translation>
+    </message>
+    <message>
+        <location filename="../models/trainingmodel.cpp" line="20"/>
+        <location filename="../models/trainingmodel.cpp" line="40"/>
+        <source>Canceled</source>
+        <translation>Zrušeno</translation>
+    </message>
+    <message>
+        <location filename="../models/trainingmodel.cpp" line="34"/>
+        <source>dd.MM.yyyy h:mm</source>
+        <translation>dd.MM.yyyy h:mm</translation>
     </message>
 </context>
 <context>
@@ -748,14 +912,24 @@
         <translation>Smazat trénink</translation>
     </message>
     <message>
-        <location filename="../ui/trainingstab.ui" line="96"/>
+        <location filename="../ui/trainingstab.ui" line="102"/>
         <source>All categories</source>
         <translation>Všechny kategorie</translation>
     </message>
     <message>
-        <location filename="../ui/trainingstab.ui" line="138"/>
+        <location filename="../ui/trainingstab.ui" line="164"/>
         <source>Record attendance</source>
         <translation>Zaznamenat docházku</translation>
+    </message>
+    <message>
+        <location filename="../trainingstab.cpp" line="73"/>
+        <source>Delete trainings</source>
+        <translation>Smazat tréninky</translation>
+    </message>
+    <message>
+        <location filename="../trainingstab.cpp" line="73"/>
+        <source>Really delete trainings?</source>
+        <translation>Opravdu chcete smazat tréninky?</translation>
     </message>
 </context>
 </TS>
