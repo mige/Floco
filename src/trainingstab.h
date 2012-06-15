@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <addtrainingdlg.h>
+#include <models/categorymodel.h>
 #include <models/teammodel.h>
 #include <models/trainingmodel.h>
 
@@ -25,12 +26,15 @@ public slots:
     void showAddTrainingDlg();
     void showEditTrainingDlg();
     void deleteTraining();
+    void changeTeamFilter(int index);
+    void changeTrainingFilter(QModelIndex index);
 
 private:
     Ui::TrainingsTab    *ui;
     AddTrainingDlg      *addTrainingDlg;
     TeamModel           *teamModel;
-    TrainingModel       *trainingModel;
+    TrainingModel       *trainingModel;    
+    CategoryModel       *categoryModel;
 };
 
 #endif // TRAININGSTAB_H

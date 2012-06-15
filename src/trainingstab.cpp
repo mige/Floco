@@ -2,6 +2,7 @@
 #include "ui_trainingstab.h"
 
 #include <QMessageBox>
+#include <QSqlField>
 
 /**
  * @brief Creates a tab widget for management training.
@@ -16,6 +17,9 @@ TrainingsTab::TrainingsTab(QWidget *parent) :
     connect(ui->btnAdd, SIGNAL(clicked()), this, SLOT(showAddTrainingDlg()));
     connect(ui->btnEdit, SIGNAL(clicked()), this, SLOT(showEditTrainingDlg()));
     connect(ui->btnDelete, SIGNAL(clicked()), this, SLOT(deleteTraining()));
+    connect(ui->comboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(changeTeamFilter(int)));
+    connect(ui->listView, SIGNAL(activated(QModelIndex)), this, SLOT(changeTrainingFilter(QModelIndex)));
+    connect(ui->listView, SIGNAL(entered(QModelIndex)), this, SLOT(changeTrainingFilter(QModelIndex)));
 
     teamModel = new TeamModel;
     trainingModel = new TrainingModel;
@@ -26,6 +30,9 @@ TrainingsTab::TrainingsTab(QWidget *parent) :
     ui->treeView->setModel(trainingModel);
     ui->treeView->hideColumn(0);
     ui->treeView->hideColumn(4);
+
+    categoryModel = new CategoryModel(this);
+    ui->comboBox->insertItems(1, categoryModel->categoryList());
 }
 
 /**
@@ -69,6 +76,31 @@ void TrainingsTab::deleteTraining()
     trainingModel->submitAll();
 }
 
+/**
+ * @brief Change trainings filter by team ID.
+ * @param index Index of selected team.
+ */
+void TrainingsTab::changeTrainingFilter(QModelIndex index)
+{
+    int idx = teamModel->record(index.row()).field("id").value().toInt();
+    trainingModel->setFilter("team_id="+QString::number(idx));
+}
+
+/**
+ * @brief Change team filter by category ID.
+ * @param index Index of selected category.
+ */
+void TrainingsTab::changeTeamFilter(int index)
+{
+    if(index == 0)
+        teamModel->setFilter(QString());
+    else
+    {
+        int idx = categoryModel->record(index-1).field("id").value().toInt();
+        teamModel->setFilter("team_category_id = "+QString::number(idx));
+    }
+    trainingModel->setFilter("team_id=0");
+}
 
 /**
  * @brief Destruct the widget.
