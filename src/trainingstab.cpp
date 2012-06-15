@@ -25,7 +25,7 @@ TrainingsTab::TrainingsTab(QWidget *parent) :
 
     ui->treeView->setModel(trainingModel);
     ui->treeView->hideColumn(0);
-    ui->treeView->hideColumn(5);
+    ui->treeView->hideColumn(4);
 }
 
 /**
@@ -43,7 +43,14 @@ void TrainingsTab::showAddTrainingDlg()
  */
 void TrainingsTab::showEditTrainingDlg()
 {
+    QItemSelectionModel *selmodel = ui->treeView->selectionModel();
+    QModelIndexList list = selmodel->selectedIndexes();
 
+    if(list.size() == 0) return;
+
+    addTrainingDlg = new AddTrainingDlg(trainingModel, list.at(0).row());
+    addTrainingDlg->exec();
+    delete addTrainingDlg;
 }
 
 /**
@@ -61,6 +68,7 @@ void TrainingsTab::deleteTraining()
         trainingModel->removeRow(list.at(i).row());
     trainingModel->submitAll();
 }
+
 
 /**
  * @brief Destruct the widget.

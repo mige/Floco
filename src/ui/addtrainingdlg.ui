@@ -2,13 +2,11 @@
 <ui version="4.0">
  <class>AddTrainingDlg</class>
  <widget class="QDialog" name="AddTrainingDlg">
-  <property name="geometry">
-   <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>403</width>
-    <height>180</height>
-   </rect>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
   </property>
   <property name="windowTitle">
    <string>Add training</string>
@@ -17,7 +15,7 @@
    <iconset resource="../resources.qrc">
     <normaloff>:/icons/icons/floco-128.png</normaloff>:/icons/icons/floco-128.png</iconset>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
+  <layout class="QVBoxLayout" name="verticalLayout_3">
    <item>
     <layout class="QFormLayout" name="formLayout">
      <item row="0" column="0">
@@ -38,76 +36,110 @@
       </widget>
      </item>
      <item row="1" column="1">
-      <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
-        <widget class="QCheckBox" name="checkBoxEveryWeek">
-         <property name="text">
-          <string>every week</string>
-         </property>
-         <property name="checked">
-          <bool>true</bool>
-         </property>
-        </widget>
+        <layout class="QHBoxLayout" name="horizontalLayoutDate">
+         <item>
+          <widget class="QCheckBox" name="checkBoxEveryWeek">
+           <property name="text">
+            <string>every week</string>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="comboBoxDay">
+           <item>
+            <property name="text">
+             <string>Monday</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Tuesday</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Wednesday</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Thursday</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Friday</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Saturday</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Sunday</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_3">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
        </item>
        <item>
-        <widget class="QComboBox" name="comboBoxDay">
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
          <item>
-          <property name="text">
-           <string>Monday</string>
-          </property>
+          <widget class="QDateEdit" name="editDate">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="displayFormat">
+            <string>d.M.yyyy</string>
+           </property>
+          </widget>
          </item>
          <item>
-          <property name="text">
-           <string>Tuesday</string>
-          </property>
+          <spacer name="horizontalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
          </item>
-         <item>
-          <property name="text">
-           <string>Wednesday</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Thursday</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Friday</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Saturday</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Sunday</string>
-          </property>
-         </item>
-        </widget>
+        </layout>
        </item>
       </layout>
      </item>
-     <item row="2" column="1">
-      <widget class="QDateEdit" name="editDate">
-       <property name="enabled">
-        <bool>false</bool>
-       </property>
-       <property name="displayFormat">
-        <string>d.M.yyyy</string>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="0">
+     <item row="2" column="0">
       <widget class="QLabel" name="label_2">
        <property name="text">
         <string>Time:</string>
        </property>
       </widget>
      </item>
-     <item row="3" column="1">
+     <item row="2" column="1">
       <widget class="QTimeEdit" name="editTime">
        <property name="time">
         <time>
@@ -118,15 +150,29 @@
        </property>
       </widget>
      </item>
-     <item row="4" column="0">
+     <item row="3" column="0">
       <widget class="QLabel" name="label_3">
        <property name="text">
         <string>Place:</string>
        </property>
       </widget>
      </item>
-     <item row="4" column="1">
-      <widget class="QLineEdit" name="editPlace"/>
+     <item row="3" column="1">
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QLineEdit" name="editPlace"/>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="chckBoxCanceled">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="text">
+          <string>Canceled</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </item>
     </layout>
    </item>

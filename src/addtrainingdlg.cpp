@@ -2,13 +2,13 @@
 #include "ui_addtrainingdlg.h"
 #include <QDebug>
 #include <QSqlField>
-#include <databasemanager.h>
+#include <QMessageBox>
 
 /**
  * @brief Creates a dialog for adding and editing training.
  * @param parent The parent widget.
  */
-AddTrainingDlg::AddTrainingDlg(TrainingModel *model, QWidget *parent) :
+AddTrainingDlg::AddTrainingDlg(TrainingModel *model, int trainingRow, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::AddTrainingDlg)
 {
@@ -16,6 +16,7 @@ AddTrainingDlg::AddTrainingDlg(TrainingModel *model, QWidget *parent) :
 
     connect(ui->btnAdd, SIGNAL(clicked()), this, SLOT(addTraining()));
     connect(ui->btnAddAndClose, SIGNAL(clicked()), this, SLOT(addTrainingAndClose()));
+    connect(ui->btnSave, SIGNAL(clicked()), this, SLOT(saveTraining()));
 
     teamModel = new TeamModel;
     ui->comboBoxTeam->setModel(teamModel);
@@ -23,11 +24,44 @@ AddTrainingDlg::AddTrainingDlg(TrainingModel *model, QWidget *parent) :
 
     this->trainingModel = model;
 
-    int year = QDate::currentDate().year();
-    int month = QDate::currentDate().month();
+    QDate currentDate = QDate::currentDate();
+
+    int year = currentDate.year();
+    int month = currentDate.month();
     if(month < 9) year--;
     startSeason = QDate::fromString("1.9."+QString::number(year), "d.M.yyyy");
     endSeason = QDate::fromString("31.8."+QString::number(year+1), "d.M.yyyy");
+
+    if(trainingRow == -1) // Add
+    {
+        ui->editDate->setDate(currentDate);
+        ui->btnSave->setVisible(false);
+        ui->chckBoxCanceled->setVisible(false);
+
+    }
+    else // Edit
+    {
+        setWindowTitle(tr("Edit training"));
+
+        QSqlRecord record = trainingModel->record(trainingRow);
+
+        QDateTime datetime = record.field("datetime").value().toDateTime();
+
+        ui->editDate->setDate(datetime.date());
+        ui->editTime->setTime(datetime.time());
+        ui->editPlace->setText(record.field("place").value().toString());
+
+        ui->checkBoxEveryWeek->setVisible(false);
+        ui->checkBoxEveryWeek->setChecked(false);
+        ui->comboBoxDay->setVisible(false);
+        ui->editDate->setEnabled(true);
+        ui->btnAdd->setVisible(false);
+        ui->btnAddAndClose->setVisible(false);
+    }
+
+    m_row = trainingRow;
+
+    setWindowState(Qt::WindowMinimized);
 }
 
 void AddTrainingDlg::addTraining()
@@ -47,9 +81,21 @@ void AddTrainingDlg::addTrainingAndClose()
     close();
 }
 
+void AddTrainingDlg::saveTraining()
+{
+    if(!checkForm(tr("Edit training"))) return;
+
+    QSqlRecord record = prepareRecords().at(0);
+
+    trainingModel->setRecord(m_row, record);
+    trainingModel->submitAll();
+
+    close();
+}
+
 bool AddTrainingDlg::insertTrainings()
 {
-    if(false) return false; // TODO: checkk form
+    if(!checkForm(tr("Add training"))) return false;
 
     QList<QSqlRecord> records = prepareRecords();
 
@@ -64,8 +110,6 @@ bool AddTrainingDlg::insertTrainings()
 
     if(!trainingModel->submitAll())
     {
-        qDebug() << records;
-        qDebug() << DatabaseManager::getInstance()->lastError();
         qDebug("err submit");
     }
 
@@ -116,7 +160,7 @@ QSqlRecord AddTrainingDlg::createRecord(QDateTime datetime, int teamID)
 
     datetimeField.setValue(datetime);
     place.setValue(ui->editPlace->text().trimmed());
-    canceled.setValue(false);
+    canceled.setValue(ui->chckBoxCanceled->isChecked());
     teamIDField.setValue(teamID);
 
     record.append(datetimeField);
@@ -125,6 +169,16 @@ QSqlRecord AddTrainingDlg::createRecord(QDateTime datetime, int teamID)
     record.append(teamIDField);
 
     return record;
+}
+
+bool AddTrainingDlg::checkForm(QString title)
+{
+    if(ui->editPlace->text().trimmed() == "")
+    {
+        QMessageBox::information(this, title, tr("You must specified place."));
+        return false;
+    }
+    return true;
 }
 
 /**
