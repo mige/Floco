@@ -20,6 +20,7 @@ TrainingsTab::TrainingsTab(QWidget *parent) :
     connect(ui->comboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(changeTeamFilter(int)));
     connect(ui->listView, SIGNAL(activated(QModelIndex)), this, SLOT(changeTrainingFilter(QModelIndex)));
     connect(ui->listView, SIGNAL(entered(QModelIndex)), this, SLOT(changeTrainingFilter(QModelIndex)));
+    connect(ui->btnRecordAttendance, SIGNAL(clicked()), this, SLOT(showRecordAttendanceDlg()));
 
     teamModel = new TeamModel;
     trainingModel = new TrainingModel;
@@ -100,6 +101,16 @@ void TrainingsTab::changeTeamFilter(int index)
         teamModel->setFilter("team_category_id = "+QString::number(idx));
     }
     trainingModel->setFilter("team_id=0");
+}
+
+/**
+ * @brief Displays the dialog for record attendance of selected training.
+ */
+void TrainingsTab::showRecordAttendanceDlg()
+{
+    recordAttendanceDlg = new RecordAttendanceDlg();
+    recordAttendanceDlg->exec();
+    delete recordAttendanceDlg;
 }
 
 /**

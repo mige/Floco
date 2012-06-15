@@ -29,7 +29,8 @@ SOURCES += main.cpp\
     addtrainingdlg.cpp \
     models/teammodel.cpp \
     models/trainingmodel.cpp \
-    playerdetails.cpp
+    playerdetails.cpp \
+    recordattendancedlg.cpp
 
 HEADERS  += mainwindow.h \
     databasemanager.h \
@@ -47,7 +48,8 @@ HEADERS  += mainwindow.h \
     addtrainingdlg.h \
     models/teammodel.h \
     models/trainingmodel.h \
-    playerdetails.h
+    playerdetails.h \
+    recordattendancedlg.h
 
 FORMS    += ui/mainwindow.ui \
     ui/addplayerdlg.ui \
@@ -59,7 +61,8 @@ FORMS    += ui/mainwindow.ui \
     ui/editcategoriesdlg.ui \
     ui/addcategorydlg.ui \
     ui/addtrainingdlg.ui \
-    ui/playerdetails.ui
+    ui/playerdetails.ui \
+    ui/recordattendancedlg.ui
 
 RESOURCES += \
     resources.qrc

@@ -6,6 +6,7 @@
 #include <models/categorymodel.h>
 #include <models/teammodel.h>
 #include <models/trainingmodel.h>
+#include <recordattendancedlg.h>
 
 namespace Ui {
     class TrainingsTab;
@@ -25,6 +26,7 @@ public:
 public slots:
     void showAddTrainingDlg();
     void showEditTrainingDlg();
+    void showRecordAttendanceDlg();
     void deleteTraining();
     void changeTeamFilter(int index);
     void changeTrainingFilter(QModelIndex index);
@@ -32,6 +34,7 @@ public slots:
 private:
     Ui::TrainingsTab    *ui;
     AddTrainingDlg      *addTrainingDlg;
+    RecordAttendanceDlg *recordAttendanceDlg;
     TeamModel           *teamModel;
     TrainingModel       *trainingModel;    
     CategoryModel       *categoryModel;
