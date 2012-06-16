@@ -108,7 +108,12 @@ void TrainingsTab::changeTeamFilter(int index)
  */
 void TrainingsTab::showRecordAttendanceDlg()
 {
-    recordAttendanceDlg = new RecordAttendanceDlg();
+    QItemSelectionModel *selmodel = ui->treeView->selectionModel();
+    QModelIndexList list = selmodel->selectedRows();
+
+    if(list.size() == 0) return;
+
+    recordAttendanceDlg = new RecordAttendanceDlg(trainingModel->record(list.at(0).row()));
     recordAttendanceDlg->exec();
     delete recordAttendanceDlg;
 }

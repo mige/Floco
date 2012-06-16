@@ -30,7 +30,8 @@ SOURCES += main.cpp\
     models/teammodel.cpp \
     models/trainingmodel.cpp \
     playerdetails.cpp \
-    recordattendancedlg.cpp
+    recordattendancedlg.cpp \
+    models/attendancemodel.cpp
 
 HEADERS  += mainwindow.h \
     databasemanager.h \
@@ -49,7 +50,8 @@ HEADERS  += mainwindow.h \
     models/teammodel.h \
     models/trainingmodel.h \
     playerdetails.h \
-    recordattendancedlg.h
+    recordattendancedlg.h \
+    models/attendancemodel.h
 
 FORMS    += ui/mainwindow.ui \
     ui/addplayerdlg.ui \
