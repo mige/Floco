@@ -76,8 +76,21 @@ void TrainingsTab::deleteTraining()
     if(list.size() > 0)
         if(QMessageBox::question(this, tr("Delete trainings"), tr("Really delete trainings?"), QMessageBox::Yes, QMessageBox::No) == QMessageBox::No) return;
 
+    QSqlTableModel *model = new QSqlTableModel();
+    model->setTable("attendance");
+
     for(int i = 0; i < list.size(); i++)
-        trainingModel->removeRow(list.at(i).row());
+    {
+        int row = list.at(i).row();
+        int id = trainingModel->record(row).field("id").value().toInt();
+        trainingModel->removeRow(row);
+
+        model->setFilter("training_id = "+QString::number(id));
+        model->select();
+        model->removeRows(0, model->rowCount());
+        model->submitAll();
+    }
+    delete model;
     trainingModel->submitAll();
 }
 
