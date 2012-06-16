@@ -169,6 +169,7 @@ void AttendanceModel::saveData()
         {
             model->setFilter("training_id = "+QString::number(m_idxTraining)+" AND player_id = "+QString::number(m_id.at(i)));
             qDebug() << model->filter();
+             model->select();
             qDebug() << model->rowCount();
             model->setRecord(0, record);
             qDebug() <<record << model->record(0);
