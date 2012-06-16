@@ -1,6 +1,5 @@
 #include "attendancemodel.h"
 
-#include <QDebug>
 #include <QSqlField>
 #include <QSqlRecord>
 
@@ -27,8 +26,7 @@ AttendanceModel::AttendanceModel(QSqlRecord trainingRecord, QObject *parent) :
     {
         int id = playersModel->record(i).field("id").value().toInt();
         model->setFilter("training_id = "+QString::number(m_idxTraining)+" AND player_id = "+QString::number(id));
-        qDebug() << "training_id = "+QString::number(m_idxTraining)+" AND player_id = "+QString::number(id);
-        if(model->rowCount() != 0)
+                if(model->rowCount() != 0)
         {
             m_Inserted.append(true);
             m_data.append(model->record(0).field("participated").value().toBool());
@@ -168,20 +166,17 @@ void AttendanceModel::saveData()
         if(m_Inserted.at(i))
         {
             model->setFilter("training_id = "+QString::number(m_idxTraining)+" AND player_id = "+QString::number(m_id.at(i)));
-            qDebug() << model->filter();
-             model->select();
-            qDebug() << model->rowCount();
+            model->select();
             model->setRecord(0, record);
-            qDebug() <<record << model->record(0);
         }
         else
         {
             model->insertRecord(-1, record);
             m_Inserted.replace(i, true);
-            qDebug() <<record;
         }
         model->submitAll();
     }
 
     model->setFilter("training_id = "+m_idxTraining);
+    model->select();
 }

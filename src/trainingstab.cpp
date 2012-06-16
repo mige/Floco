@@ -24,6 +24,7 @@ TrainingsTab::TrainingsTab(QWidget *parent) :
 
     teamModel = new TeamModel;
     trainingModel = new TrainingModel;
+    trainingModel->setFilter("team_id=0");
 
     ui->listView->setModel(teamModel);
     ui->listView->setModelColumn(1);
@@ -31,6 +32,9 @@ TrainingsTab::TrainingsTab(QWidget *parent) :
     ui->treeView->setModel(trainingModel);
     ui->treeView->hideColumn(0);
     ui->treeView->hideColumn(4);
+    ui->treeView->sortByColumn(1, Qt::AscendingOrder);
+    ui->treeView->header()->resizeSection(1, 140);
+    ui->treeView->header()->resizeSection(2, 250);
 
     categoryModel = new CategoryModel(this);
     ui->comboBox->insertItems(1, categoryModel->categoryList());
