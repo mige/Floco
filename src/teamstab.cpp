@@ -6,6 +6,8 @@
 #include <QMessageBox>
 #include <QSqlField>
 #include <QSqlRecord>
+#include <QSqlTableModel>
+#include <models/trainingmodel.h>
 
 /**
  * @brief Creates a tab widget for management teams.
@@ -99,6 +101,32 @@ void TeamsTab::deleteTeam()
     playerModel->setFilter("team_id=0");
 
     // delete team
+
+    int id = teamModel->record(teamRow).field("id").value().toInt();
+
+    TrainingModel *trainingModel = new TrainingModel();
+    QSqlTableModel *attendanceModel = new QSqlTableModel();
+
+    trainingModel->setFilter("team_id = "+QString::number(id));
+    trainingModel->select();
+
+    attendanceModel->setTable("attendance");
+
+    for(int i = 0; i < trainingModel->rowCount(); i++)
+    {
+        int idTraining = trainingModel->record(i).field("id").value().toInt();
+
+        attendanceModel->setFilter("training_id = "+QString::number(idTraining));
+        attendanceModel->select();
+        attendanceModel->removeRows(0, attendanceModel->rowCount());
+        attendanceModel->submitAll();
+    }
+
+    trainingModel->removeRows(0, trainingModel->rowCount());
+    trainingModel->submitAll();
+
+    delete attendanceModel;
+    delete trainingModel;
 
     teamModel->removeRow(teamRow);
     teamModel->submitAll();

@@ -66,7 +66,7 @@ void TrainingsTab::showEditTrainingDlg()
 }
 
 /**
- * @brief Deletes the selected trainings.
+ * @brief Deletes the selected trainings and attendance.
  */
 void TrainingsTab::deleteTraining()
 {
