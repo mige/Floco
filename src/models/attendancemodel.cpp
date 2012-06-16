@@ -44,16 +44,32 @@ AttendanceModel::AttendanceModel(QSqlRecord trainingRecord, QObject *parent) :
     model->setFilter("training_id = "+m_idxTraining);
 }
 
+/**
+ * @brief Return row count
+ * @param parent Not use
+ * @return Row count
+ */
 int AttendanceModel::rowCount(const QModelIndex &parent) const
 {
     return playersModel->rowCount();
 }
 
+/**
+ * @brief Columnt count
+ * @param parent Not use
+ * @return Allways return 2
+ */
 int AttendanceModel::columnCount(const QModelIndex &parent) const
 {
     return 2;
 }
 
+/**
+ * @brief AttendanceModel::data
+ * @param index
+ * @param role
+ * @return Data
+ */
 QVariant AttendanceModel::data(const QModelIndex &index, int role) const
 {
     if(index.column() == 0 && role == Qt::DisplayRole)
@@ -112,6 +128,13 @@ Qt::ItemFlags AttendanceModel::flags(const QModelIndex &index) const
     return flags;
 }
 
+/**
+ * @brief AttendanceModel::headerData
+ * @param section
+ * @param orientation
+ * @param role
+ * @return
+ */
 QVariant AttendanceModel::headerData(int section, Qt::Orientation orientation, int role) const
 {
     if(orientation == Qt::Horizontal && role == Qt::DisplayRole)
@@ -123,6 +146,9 @@ QVariant AttendanceModel::headerData(int section, Qt::Orientation orientation, i
     return QAbstractTableModel::headerData(section, orientation, role);
 }
 
+/**
+ * @brief Save data to table.
+ */
 void AttendanceModel::saveData()
 {
     for(int i = 0; i < m_data.size(); i++)
