@@ -180,3 +180,10 @@ void AttendanceModel::saveData()
     model->setFilter("training_id = "+m_idxTraining);
     model->select();
 }
+
+AttendanceModel::~AttendanceModel()
+{
+    delete model;
+    delete trainingsModel;
+    delete playersModel;
+}
