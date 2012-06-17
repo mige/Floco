@@ -24,15 +24,23 @@
          <height>16777215</height>
         </size>
        </property>
+       <item>
+        <property name="text">
+         <string>All categories</string>
+        </property>
+       </item>
       </widget>
      </item>
      <item>
-      <widget class="QTreeView" name="treeView">
+      <widget class="QListView" name="listView">
        <property name="maximumSize">
         <size>
          <width>200</width>
          <height>16777215</height>
         </size>
+       </property>
+       <property name="editTriggers">
+        <set>QAbstractItemView::NoEditTriggers</set>
        </property>
       </widget>
      </item>
