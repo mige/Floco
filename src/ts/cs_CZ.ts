@@ -375,11 +375,57 @@
     </message>
 </context>
 <context>
+    <name>AttendanceMatrixModel</name>
+    <message>
+        <location filename="../models/attendancematrixmodel.cpp" line="32"/>
+        <source>dd.MM.yyyy h:mm</source>
+        <translation>dd.MM.yyyy h:mm</translation>
+    </message>
+    <message>
+        <location filename="../models/attendancematrixmodel.cpp" line="58"/>
+        <source>Yes</source>
+        <translation>Ano</translation>
+    </message>
+    <message>
+        <location filename="../models/attendancematrixmodel.cpp" line="58"/>
+        <source>No</source>
+        <translation>Ne</translation>
+    </message>
+</context>
+<context>
+    <name>AttendanceModel</name>
+    <message>
+        <location filename="../models/attendancemodel.cpp" line="84"/>
+        <source>Yes</source>
+        <translation>Ano</translation>
+    </message>
+    <message>
+        <location filename="../models/attendancemodel.cpp" line="84"/>
+        <source>No</source>
+        <translation>Ne</translation>
+    </message>
+    <message>
+        <location filename="../models/attendancemodel.cpp" line="140"/>
+        <source>Player</source>
+        <translation>Hráč</translation>
+    </message>
+    <message>
+        <location filename="../models/attendancemodel.cpp" line="141"/>
+        <source>Was present?</source>
+        <translation>Byl přítomen?</translation>
+    </message>
+</context>
+<context>
     <name>AttendanceTab</name>
     <message>
         <location filename="../ui/attendancetab.ui" line="14"/>
         <source>Form</source>
         <translation></translation>
+    </message>
+    <message>
+        <location filename="../ui/attendancetab.ui" line="29"/>
+        <source>All categories</source>
+        <translation>Všechny kategorie</translation>
     </message>
 </context>
 <context>
@@ -639,7 +685,7 @@
     </message>
     <message>
         <location filename="../ui/playerstab.ui" line="100"/>
-        <location filename="../playerstab.cpp" line="116"/>
+        <location filename="../playerstab.cpp" line="131"/>
         <source>Filter...</source>
         <translation>Filtr...</translation>
     </message>
@@ -799,14 +845,19 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/recordattendancedlg.ui" line="79"/>
+        <location filename="../ui/recordattendancedlg.ui" line="86"/>
         <source>Save</source>
         <translation>Uložit</translation>
     </message>
     <message>
-        <location filename="../ui/recordattendancedlg.ui" line="90"/>
+        <location filename="../ui/recordattendancedlg.ui" line="97"/>
         <source>Cancel</source>
         <translation>Zrušit</translation>
+    </message>
+    <message>
+        <location filename="../recordattendancedlg.cpp" line="22"/>
+        <source>dd.MM.yyyy h:mm</source>
+        <translation>dd.MM.yyyy h:mm</translation>
     </message>
 </context>
 <context>
@@ -850,12 +901,12 @@
         <translation>Všechny kategorie</translation>
     </message>
     <message>
-        <location filename="../teamstab.cpp" line="87"/>
+        <location filename="../teamstab.cpp" line="89"/>
         <source>Delete team</source>
         <translation>Smazat tým</translation>
     </message>
     <message>
-        <location filename="../teamstab.cpp" line="87"/>
+        <location filename="../teamstab.cpp" line="89"/>
         <source>Really delete team?</source>
         <translation>Opravdu chcete smazat tým?</translation>
     </message>
@@ -863,28 +914,28 @@
 <context>
     <name>TrainingModel</name>
     <message>
-        <location filename="../models/trainingmodel.cpp" line="17"/>
+        <location filename="../models/trainingmodel.cpp" line="19"/>
         <source>ID</source>
         <translation>ID</translation>
     </message>
     <message>
-        <location filename="../models/trainingmodel.cpp" line="18"/>
+        <location filename="../models/trainingmodel.cpp" line="20"/>
         <source>Datetime</source>
         <translation>Datum a čas</translation>
     </message>
     <message>
-        <location filename="../models/trainingmodel.cpp" line="19"/>
+        <location filename="../models/trainingmodel.cpp" line="21"/>
         <source>Place</source>
         <translation>Místo</translation>
     </message>
     <message>
-        <location filename="../models/trainingmodel.cpp" line="20"/>
-        <location filename="../models/trainingmodel.cpp" line="40"/>
+        <location filename="../models/trainingmodel.cpp" line="22"/>
+        <location filename="../models/trainingmodel.cpp" line="49"/>
         <source>Canceled</source>
         <translation>Zrušeno</translation>
     </message>
     <message>
-        <location filename="../models/trainingmodel.cpp" line="34"/>
+        <location filename="../models/trainingmodel.cpp" line="43"/>
         <source>dd.MM.yyyy h:mm</source>
         <translation>dd.MM.yyyy h:mm</translation>
     </message>
@@ -922,12 +973,12 @@
         <translation>Zaznamenat docházku</translation>
     </message>
     <message>
-        <location filename="../trainingstab.cpp" line="73"/>
+        <location filename="../trainingstab.cpp" line="77"/>
         <source>Delete trainings</source>
         <translation>Smazat tréninky</translation>
     </message>
     <message>
-        <location filename="../trainingstab.cpp" line="73"/>
+        <location filename="../trainingstab.cpp" line="77"/>
         <source>Really delete trainings?</source>
         <translation>Opravdu chcete smazat tréninky?</translation>
     </message>
