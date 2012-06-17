@@ -57,7 +57,7 @@
         <enum>QAbstractItemView::NoSelection</enum>
        </property>
        <attribute name="horizontalHeaderDefaultSectionSize">
-        <number>30</number>
+        <number>35</number>
        </attribute>
        <attribute name="verticalHeaderDefaultSectionSize">
         <number>24</number>
