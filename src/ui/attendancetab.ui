@@ -49,7 +49,20 @@
    <item>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
-      <widget class="QTreeView" name="treeView_2"/>
+      <widget class="QTableView" name="tableView">
+       <property name="alternatingRowColors">
+        <bool>true</bool>
+       </property>
+       <property name="selectionMode">
+        <enum>QAbstractItemView::NoSelection</enum>
+       </property>
+       <attribute name="horizontalHeaderDefaultSectionSize">
+        <number>30</number>
+       </attribute>
+       <attribute name="verticalHeaderDefaultSectionSize">
+        <number>24</number>
+       </attribute>
+      </widget>
      </item>
     </layout>
    </item>

@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <models/categorymodel.h>
 #include <models/teammodel.h>
+#include <models/attendancematrixmodel.h>
 
 namespace Ui {
     class AttendanceTab;
@@ -22,12 +23,14 @@ public:
 
 public slots:
     void changeTeamFilter(int index);
+    void changeAttendanceFilter(QModelIndex index);
 
 private:
-    Ui::AttendanceTab *ui;
+    Ui::AttendanceTab       *ui;
 
-    TeamModel         *teamModel;
-    CategoryModel     *categoryModel;
+    TeamModel               *teamModel;
+    CategoryModel           *categoryModel;
+    AttendanceMatrixModel   *model;
 };
 
 #endif // ATTENDANCETAB_H

@@ -1,6 +1,7 @@
 #include "attendancetab.h"
 #include "ui_attendancetab.h"
 
+#include <QDebug>
 #include <QSqlRecord>
 #include <QSqlField>
 
@@ -16,12 +17,17 @@ AttendanceTab::AttendanceTab(QWidget *parent) :
 
     teamModel = new TeamModel;
     categoryModel = new CategoryModel;
+    model = new AttendanceMatrixModel();
+    model->setTeam(0);
 
     ui->listView->setModel(teamModel);
     ui->listView->setModelColumn(1);
     ui->comboBox->insertItems(1, categoryModel->categoryList());
+    ui->tableView->setModel(model);
 
     connect(ui->comboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(changeTeamFilter(int)));
+    connect(ui->listView, SIGNAL(activated(QModelIndex)), this, SLOT(changeAttendanceFilter(QModelIndex)));
+    connect(ui->listView, SIGNAL(entered(QModelIndex)), this, SLOT(changeAttendanceFilter(QModelIndex)));
 }
 
 /**
@@ -37,7 +43,17 @@ void AttendanceTab::changeTeamFilter(int index)
         int idx = categoryModel->record(index-1).field("id").value().toInt();
         teamModel->setFilter("team_category_id = "+QString::number(idx));
     }
-    //rrrtrainingModel->setFilter("team_id=0");
+    model->setTeam(0);
+}
+
+/**
+ * @brief Change attendance filter by team ID.
+ * @param index Index of selected team.
+ */
+void AttendanceTab::changeAttendanceFilter(QModelIndex index)
+{
+    int idx = teamModel->record(index.row()).field("id").value().toInt();
+    model->setTeam(idx);
 }
 
 /**
@@ -45,5 +61,8 @@ void AttendanceTab::changeTeamFilter(int index)
  */
 AttendanceTab::~AttendanceTab()
 {
+    delete teamModel;
+    delete categoryModel;
+    delete model;
     delete ui;
 }
