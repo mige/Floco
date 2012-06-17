@@ -74,8 +74,23 @@ void PlayersTab::deletePlayer()
     if(list.size() > 0)
         if(QMessageBox::question(this, tr("Delete players"), tr("Really delete players?"), QMessageBox::Yes, QMessageBox::No) == QMessageBox::No) return;
 
+    QSqlTableModel *attendanceModel = new QSqlTableModel();
+    attendanceModel->setTable("attendance");
+
     for(int i = 0; i < list.size(); i++)
-        model->removeRow(list.at(i).row());
+    {
+        int row = list.at(i).row();
+        int id = model->record(row).field("id").value().toInt();
+
+        attendanceModel->setFilter("player_id = "+QString::number(id));
+        attendanceModel->select();
+        attendanceModel->removeRows(0, attendanceModel->rowCount());
+        attendanceModel->submitAll();
+
+        model->removeRow(row);
+    }
+
+    delete attendanceModel;
     model->submitAll();
 }
 
