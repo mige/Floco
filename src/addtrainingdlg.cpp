@@ -47,6 +47,9 @@ AddTrainingDlg::AddTrainingDlg(TrainingModel *model, int trainingRow, QWidget *p
 
         QDateTime datetime = record.field("datetime").value().toDateTime();
 
+        int pos = teamModel->getPosition(record.field("team_id").value().toInt());
+        ui->comboBoxTeam->setCurrentIndex(pos);
+
         ui->editDate->setDate(datetime.date());
         ui->editTime->setTime(datetime.time());
         ui->editPlace->setText(record.field("place").value().toString());
