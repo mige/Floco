@@ -603,24 +603,29 @@
         <translation>&amp;Soubor</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="92"/>
+        <location filename="../ui/mainwindow.ui" line="93"/>
         <source>&amp;Help</source>
         <translation>&amp;Nápověda</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="98"/>
+        <location filename="../ui/mainwindow.ui" line="99"/>
         <source>&amp;Categories</source>
         <translation>&amp;Kategorie</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="108"/>
+        <location filename="../ui/mainwindow.ui" line="109"/>
         <source>About...</source>
         <translation>O Floco...</translation>
     </message>
     <message>
-        <location filename="../ui/mainwindow.ui" line="113"/>
+        <location filename="../ui/mainwindow.ui" line="114"/>
         <source>Edit categories</source>
         <translation>Upravit kategorie</translation>
+    </message>
+    <message>
+        <location filename="../ui/mainwindow.ui" line="119"/>
+        <source>Close</source>
+        <translation>Zavřít</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="20"/>
