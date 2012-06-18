@@ -265,10 +265,80 @@
     </message>
 </context>
 <context>
+    <name>AddTournamentDlg</name>
+    <message>
+        <location filename="../ui/addtournamentdlg.ui" line="20"/>
+        <location filename="../addtournamentdlg.cpp" line="49"/>
+        <source>Add tournament</source>
+        <translation>Přidat turnaj</translation>
+    </message>
+    <message>
+        <location filename="../ui/addtournamentdlg.ui" line="32"/>
+        <source>Team:</source>
+        <translation>Tým:</translation>
+    </message>
+    <message>
+        <location filename="../ui/addtournamentdlg.ui" line="42"/>
+        <source>Date:</source>
+        <translation>Datum:</translation>
+    </message>
+    <message>
+        <location filename="../ui/addtournamentdlg.ui" line="49"/>
+        <source>d.M.yyyy</source>
+        <translation>d.M.yyyy</translation>
+    </message>
+    <message>
+        <location filename="../ui/addtournamentdlg.ui" line="56"/>
+        <source>Place:</source>
+        <translation>Místo:</translation>
+    </message>
+    <message>
+        <location filename="../ui/addtournamentdlg.ui" line="66"/>
+        <source>In season</source>
+        <translation>V sezóně</translation>
+    </message>
+    <message>
+        <location filename="../ui/addtournamentdlg.ui" line="73"/>
+        <source>yes</source>
+        <translation>ano</translation>
+    </message>
+    <message>
+        <location filename="../ui/addtournamentdlg.ui" line="100"/>
+        <source>Add</source>
+        <translation>Přidat</translation>
+    </message>
+    <message>
+        <location filename="../ui/addtournamentdlg.ui" line="117"/>
+        <source>Add and close</source>
+        <translation>Přidat a zavřít</translation>
+    </message>
+    <message>
+        <location filename="../ui/addtournamentdlg.ui" line="134"/>
+        <source>Save</source>
+        <translation>Uložit</translation>
+    </message>
+    <message>
+        <location filename="../ui/addtournamentdlg.ui" line="145"/>
+        <source>Cancel</source>
+        <translation>Zrušit</translation>
+    </message>
+    <message>
+        <location filename="../addtournamentdlg.cpp" line="29"/>
+        <location filename="../addtournamentdlg.cpp" line="114"/>
+        <source>Edit tournament</source>
+        <translation>Upravit turnaj</translation>
+    </message>
+    <message>
+        <location filename="../addtournamentdlg.cpp" line="126"/>
+        <source>You must specified place.</source>
+        <translation>Musíte vyplnit místo.</translation>
+    </message>
+</context>
+<context>
     <name>AddTrainingDlg</name>
     <message>
         <location filename="../ui/addtrainingdlg.ui" line="12"/>
-        <location filename="../addtrainingdlg.cpp" line="99"/>
+        <location filename="../addtrainingdlg.cpp" line="102"/>
         <source>Add training</source>
         <translation>Přidat trénink</translation>
     </message>
@@ -364,12 +434,12 @@
     </message>
     <message>
         <location filename="../addtrainingdlg.cpp" line="44"/>
-        <location filename="../addtrainingdlg.cpp" line="87"/>
+        <location filename="../addtrainingdlg.cpp" line="90"/>
         <source>Edit training</source>
         <translation>Upravit trénink</translation>
     </message>
     <message>
-        <location filename="../addtrainingdlg.cpp" line="179"/>
+        <location filename="../addtrainingdlg.cpp" line="182"/>
         <source>You must specified place.</source>
         <translation>Musíte vyplnit místo.</translation>
     </message>
@@ -764,6 +834,7 @@
     <message>
         <location filename="../models/categorymodel.cpp" line="17"/>
         <location filename="../models/playermodel.cpp" line="14"/>
+        <location filename="../models/tournamentmodel.cpp" line="10"/>
         <source>ID</source>
         <translation>ID</translation>
     </message>
@@ -826,6 +897,21 @@
         <source>Post</source>
         <translation>Post</translation>
     </message>
+    <message>
+        <location filename="../models/tournamentmodel.cpp" line="11"/>
+        <source>Date</source>
+        <translation>Datum</translation>
+    </message>
+    <message>
+        <location filename="../models/tournamentmodel.cpp" line="12"/>
+        <source>Place</source>
+        <translation>Místo</translation>
+    </message>
+    <message>
+        <location filename="../models/tournamentmodel.cpp" line="13"/>
+        <source>In season</source>
+        <translation>V sezóně</translation>
+    </message>
 </context>
 <context>
     <name>RecordAttendanceDlg</name>
@@ -842,7 +928,7 @@
     <message>
         <location filename="../ui/recordattendancedlg.ui" line="39"/>
         <source>TextLabel</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ui/recordattendancedlg.ui" line="86"/>
@@ -863,12 +949,12 @@
 <context>
     <name>TeamModel</name>
     <message>
-        <location filename="../models/teammodel.cpp" line="14"/>
+        <location filename="../models/teammodel.cpp" line="17"/>
         <source>ID</source>
         <translation>ID</translation>
     </message>
     <message>
-        <location filename="../models/teammodel.cpp" line="15"/>
+        <location filename="../models/teammodel.cpp" line="18"/>
         <source>Name</source>
         <translation>Jméno</translation>
     </message>
@@ -901,14 +987,45 @@
         <translation>Všechny kategorie</translation>
     </message>
     <message>
-        <location filename="../teamstab.cpp" line="89"/>
+        <location filename="../teamstab.cpp" line="90"/>
         <source>Delete team</source>
         <translation>Smazat tým</translation>
     </message>
     <message>
-        <location filename="../teamstab.cpp" line="89"/>
+        <location filename="../teamstab.cpp" line="90"/>
         <source>Really delete team?</source>
         <translation>Opravdu chcete smazat tým?</translation>
+    </message>
+</context>
+<context>
+    <name>TournamentModel</name>
+    <message>
+        <location filename="../models/tournamentmodel.cpp" line="33"/>
+        <source>In season</source>
+        <translation>V sezóně</translation>
+    </message>
+</context>
+<context>
+    <name>TournamentsTab</name>
+    <message>
+        <location filename="../ui/tournamentstab.ui" line="14"/>
+        <source>Form</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../ui/tournamentstab.ui" line="93"/>
+        <source>All categories</source>
+        <translation>Všechny kategorie</translation>
+    </message>
+    <message>
+        <location filename="../tournamentstab.cpp" line="74"/>
+        <source>Delete tournaments</source>
+        <translation>Smazat turnaje</translation>
+    </message>
+    <message>
+        <location filename="../tournamentstab.cpp" line="74"/>
+        <source>Really delete tournaments?</source>
+        <translation>Opravdu chcete smazat turnaje?</translation>
     </message>
 </context>
 <context>
