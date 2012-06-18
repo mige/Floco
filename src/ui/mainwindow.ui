@@ -42,7 +42,7 @@
         <string>Teams</string>
        </attribute>
       </widget>
-      <widget class="QWidget" name="tabTournaments">
+      <widget class="TournamentsTab" name="tabTournaments">
        <attribute name="icon">
         <iconset resource="../resources.qrc">
          <normaloff>:/icons/icons/tournament-48.png</normaloff>:/icons/icons/tournament-48.png</iconset>
@@ -79,7 +79,7 @@
      <x>0</x>
      <y>0</y>
      <width>741</width>
-     <height>21</height>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuSoubor">
@@ -138,6 +138,12 @@
    <class>AttendanceTab</class>
    <extends>QWidget</extends>
    <header>attendancetab.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>TournamentsTab</class>
+   <extends>QWidget</extends>
+   <header>tournamentstab.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

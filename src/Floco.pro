@@ -32,7 +32,10 @@ SOURCES += main.cpp\
     playerdetails.cpp \
     recordattendancedlg.cpp \
     models/attendancemodel.cpp \
-    models/attendancematrixmodel.cpp
+    models/attendancematrixmodel.cpp \
+    tournamentstab.cpp \
+    addtournamentdlg.cpp \
+    models/tournamentmodel.cpp
 
 HEADERS  += mainwindow.h \
     databasemanager.h \
@@ -53,7 +56,10 @@ HEADERS  += mainwindow.h \
     playerdetails.h \
     recordattendancedlg.h \
     models/attendancemodel.h \
-    models/attendancematrixmodel.h
+    models/attendancematrixmodel.h \
+    tournamentstab.h \
+    addtournamentdlg.h \
+    models/tournamentmodel.h
 
 FORMS    += ui/mainwindow.ui \
     ui/addplayerdlg.ui \
@@ -66,7 +72,9 @@ FORMS    += ui/mainwindow.ui \
     ui/addcategorydlg.ui \
     ui/addtrainingdlg.ui \
     ui/playerdetails.ui \
-    ui/recordattendancedlg.ui
+    ui/recordattendancedlg.ui \
+    ui/tournamentstab.ui \
+    ui/addtournamentdlg.ui
 
 RESOURCES += \
     resources.qrc

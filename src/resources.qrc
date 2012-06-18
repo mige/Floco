@@ -22,6 +22,8 @@
         <file>icons/add-training-22.png</file>
         <file>icons/delete-training-22.png</file>
         <file>icons/clear-16.png</file>
+        <file>icons/add-tournament-22.png</file>
+        <file>icons/delete-tournament-22.png</file>
     </qresource>
     <qresource prefix="/db">
         <file>db.sql</file>
