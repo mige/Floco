@@ -8,6 +8,7 @@
 #include <QSqlRecord>
 #include <QSqlTableModel>
 #include <models/trainingmodel.h>
+#include <models/tournamentmodel.h>
 
 /**
  * @brief Creates a tab widget for management teams.
@@ -106,9 +107,12 @@ void TeamsTab::deleteTeam()
 
     TrainingModel *trainingModel = new TrainingModel();
     QSqlTableModel *attendanceModel = new QSqlTableModel();
+    TournamentModel *tournamentModel = new TournamentModel;
 
     trainingModel->setFilter("team_id = "+QString::number(id));
     trainingModel->select();
+    tournamentModel->setFilter("team_id = "+QString::number(id));
+    tournamentModel->select();
 
     attendanceModel->setTable("attendance");
 
@@ -124,9 +128,12 @@ void TeamsTab::deleteTeam()
 
     trainingModel->removeRows(0, trainingModel->rowCount());
     trainingModel->submitAll();
+    tournamentModel->removeRows(0, tournamentModel->rowCount());
+    tournamentModel->submitAll();
 
     delete attendanceModel;
     delete trainingModel;
+    delete tournamentModel;
 
     teamModel->removeRow(teamRow);
     teamModel->submitAll();
